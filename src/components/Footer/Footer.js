@@ -6,8 +6,8 @@ const Footer = () => (
 
   <footer className="footer">
     <p>FOOTER</p>
-    <Link to="/login"><p>Sign In</p></Link>
-    <Link to="/signup"><p>Sign Up</p></Link>
+    <Link to="/login"><p>Sign In (footer)</p></Link>
+    <Link to="/signup"><p>Sign Up (footer)</p></Link>
   </footer>
 
 );
