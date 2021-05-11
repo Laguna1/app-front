@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import ActivityForm from '../ActivityForm/ActivityForm';
@@ -10,8 +11,17 @@ function App() {
     <div className="App">
       <Header />
       <p className="h1">Hi there (APP FRONT)!!!</p>
-      <ActivityForm />
-      <TrackingForm />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" />
+          <Route path="/activityform">
+            <ActivityForm />
+          </Route>
+          <Route path="/trackingform">
+            <TrackingForm />
+          </Route>
+        </Switch>
+      </BrowserRouter>
       <Footer />
     </div>
   );
