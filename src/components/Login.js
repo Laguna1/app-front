@@ -50,6 +50,7 @@ class Login extends React.Component {
           });
         }
       })
+      // eslint-disable-next-line
       .catch((error) => console.log('api errors:', error));
   }
 

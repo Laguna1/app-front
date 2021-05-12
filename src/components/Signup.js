@@ -46,6 +46,7 @@ class Signup extends React.Component {
           });
         }
       })
+      // eslint-disable-next-line
       .catch((error) => console.log('api errors:', error));
   }
 
@@ -86,7 +87,7 @@ class Signup extends React.Component {
             onChange={this.handleChangePassword}
           />
           <button placeholder="submit" type="submit">
-            Sign In
+            Sign Up
           </button>
         </form>
         <div>

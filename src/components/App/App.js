@@ -27,6 +27,7 @@ class App extends React.Component {
   }
 
   handleLogIn(data) {
+    // eslint-disable-next-line
     console.log(data);
     this.setState({
       isLoggedIn: true,
@@ -51,6 +52,7 @@ class App extends React.Component {
           this.handleLogOut();
         }
       })
+      // eslint-disable-next-line
       .catch((error) => console.log('api errors:', error));
   }
 
