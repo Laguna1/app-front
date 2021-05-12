@@ -43,7 +43,7 @@ class App extends React.Component {
   }
 
   logInStatus() {
-    axios.get('http://localhost:3001/logged_in',
+    axios.get('https://final-api-backend.herokuapp.com/logged_in',
       { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {

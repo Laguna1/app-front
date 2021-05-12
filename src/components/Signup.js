@@ -35,7 +35,7 @@ class Signup extends React.Component {
       password,
     };
 
-    axios.post('http://localhost:3001/users', { user }, { withCredentials: true })
+    axios.post('https://final-api-backend.herokuapp.com/users', { user }, { withCredentials: true })
       .then((response) => {
         if (response.data.status === 'created') {
           handleLogin(response.data);
