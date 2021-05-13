@@ -6,7 +6,7 @@ export const DELETE_ITEM = 'DELETE ITEM';
 export const CREATE_ITEM_ERROR = 'CREATE ITEM ERROR';
 export const UPDATE_ITEM = 'UPDATE ITEM';
 
-export const fetchActivityItems = (userid, activityid) => (dispatch) => axios.get(`https://final-api-backend.herokuapp.com/users/${userid}/activities/${activityid}/trackings`)
+export const fetchActivItems = (userid, activityid) => (dispatch) => axios.get(`https://final-api-backend.herokuapp.com/users/${userid}/activities/${activityid}/trackings`)
   .then((response) => response.data)
   .then((data) => {
     dispatch({

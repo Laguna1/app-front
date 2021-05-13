@@ -6,8 +6,8 @@ import './App.css';
 import axios from 'axios';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Login from '../Login';
-import Signup from '../Signup';
+import Login from '../../containers/entryGroup/Login';
+import Signup from '../../containers/entryGroup/Signup';
 import WorkPage from '../WorkPage';
 
 class App extends React.Component {
