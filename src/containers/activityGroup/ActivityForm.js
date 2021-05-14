@@ -92,7 +92,7 @@ class Activity extends React.Component {
          <div className="activities">
            { !editForm && !addForm && <h3>Your Activities</h3>}
 
-           {activity.length === 0 && !addForm && <div className="tracking">Start adding a illness you want to track here!</div>}
+           {activity.length === 0 && !addForm && <div className="tracking">Add your activities here!</div>}
            {activity.map((activ) => (
              <div key={activ.id}>
                { !editForm && !addForm && (

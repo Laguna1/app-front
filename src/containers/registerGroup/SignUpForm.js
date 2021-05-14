@@ -58,7 +58,7 @@ class Signup extends Component {
 
    render() {
      const {
-       username, errors, password,
+       username, password, errors,
      } = this.state;
      return (
        <section className="signup-form">
@@ -84,7 +84,7 @@ class Signup extends Component {
              required
            />
            <button placeholder="submit" type="submit">
-             Sign In
+             Sign up
            </button>
          </form>
        </section>

@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Login from '../../containers/entryGroup/Login';
-import Signup from '../../containers/entryGroup/Signup';
+import Login from '../../containers/entryGroup/LoginForm';
+import Signup from '../../containers/registerGroup/SignUpForm';
 import ActivityForm from '../../containers/activityGroup/ActivityForm';
 import TrackingForm from '../../containers/trackingGroup/TrackingForm';
 import { loginStatus } from '../../actions/user';
@@ -41,7 +41,6 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <Header />
-          <Footer displayForm={this.displayForm} addForm={addForm} />
           <Switch>
             <Route
               exact
