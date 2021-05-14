@@ -1,15 +1,82 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import './Footer.css';
-import { Link } from 'react-router-dom';
+import { logOutUser } from '../../actions/user';
+import PathComponent from '../PathComponent';
 
-const Footer = () => (
+const Footer = ({
+  isLogin, logOut, history, displayForm, match,
+}) => {
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const response = await logOut();
+    if (response.data.logged_out) {
+      history.push('/');
+    }
+  };
 
-  <footer className="footer">
-    <p>FOOTER</p>
-    <Link to="/login"><p>Sign In (footer)</p></Link>
-    <Link to="/signup"><p>Sign Up (footer)</p></Link>
-  </footer>
+  const displayAddForm = () => {
+    displayForm();
+  };
 
-);
+  return (
+    <nav className="menu">
+      <PathComponent path="workpage" icon="fa-bar-chart" linkText="Activities" />
 
-export default Footer;
+      {isLogin && match.path === '/activity/:id' ? (
+        <div className="icons icon-btn">
+          <button type="button" onClick={displayAddForm}>
+            <i className="fa fa-line-chart" />
+            <p className="add-trackings">Add Trackings</p>
+          </button>
+        </div>
+      ) : null}
+
+      { !isLogin
+        && (
+        <>
+          <PathComponent path="login" icon="fa-sign-in" linkText="Sign In" />
+          <PathComponent path="signup" icon="fa-user-circle" linkText="Sign Up" />
+        </>
+        )}
+      { isLogin && (
+      <PathComponent path="logout" icon="fa-sign-in" linkText="Log Out" handleClick={(e) => handleClick(e)} />
+      )}
+    </nav>
+
+  );
+};
+Footer.propTypes = {
+  isLogin: PropTypes.bool,
+  logOut: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+
+  match: PropTypes.shape({
+    path: PropTypes.string,
+  }),
+  displayForm: PropTypes.func,
+};
+
+Footer.defaultProps = {
+  isLogin: false,
+  logOut: () => {},
+  history: {},
+  match: {},
+  displayForm: () => {},
+
+};
+
+const mapStateToProps = (state) => ({
+  isLogin: state.user.isLogin,
+  tracking: state.tracking,
+
+});
+const mapDispatchToProps = (dispatch) => ({
+  logOut: () => dispatch(logOutUser()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Footer));

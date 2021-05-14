@@ -7,7 +7,7 @@ import {
   fetchUserActivity, createActivity, deleteActivity,
 } from '../../actions/activity';
 import { loginStatus } from '../../actions/user';
-import './Activity.css';
+import './ActivityForm.css';
 
 class Activity extends React.Component {
   constructor(props) {

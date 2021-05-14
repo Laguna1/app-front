@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import { fetchActivItems, createItem, deleteItem } from '../../actions/tracking';
 import { loginStatus } from '../../actions/user';
 import TrackingForm from '../../components/TrackingForm/TrackingForm';
-import './Trackings.css';
+import './TrackingForm.css';
 
 class Trackings extends React.Component {
   constructor(props) {

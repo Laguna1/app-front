@@ -2,101 +2,133 @@ import React from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './App.css';
-import axios from 'axios';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../../containers/entryGroup/Login';
 import Signup from '../../containers/entryGroup/Signup';
-import WorkPage from '../WorkPage';
+import ActivityForm from '../../containers/activityGroup/ActivityForm';
+import TrackingForm from '../../containers/trackingGroup/TrackingForm';
+import { loginStatus } from '../../actions/user';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      isLoggedIn: false,
-      user: {},
+      addForm: false,
     };
-    this.handleLogIn = this.handleLogIn.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   componentDidMount() {
-    // eslint-disable-next-line no-unused-expressions
-    this.LogInStatus;
+    const { loginStatus } = this.props;
+    loginStatus();
   }
 
-  handleLogIn(data) {
-    // eslint-disable-next-line
-    console.log(data);
+  displayForm = () => {
+    const { addForm } = this.state;
     this.setState({
-      isLoggedIn: true,
-      user: data.user,
+      addForm: !addForm,
     });
-  }
-
-  handleLogOut() {
-    this.setState({
-      isLoggedIn: false,
-      user: {},
-    });
-  }
-
-  logInStatus() {
-    axios.get('https://final-api-backend.herokuapp.com/logged_in',
-      { withCredentials: true })
-      .then((response) => {
-        if (response.data.logged_in) {
-          this.handleLogIn(response);
-        } else {
-          this.handleLogOut();
-        }
-      })
-      // eslint-disable-next-line
-      .catch((error) => console.log('api errors:', error));
   }
 
   render() {
-    const { isLoggedIn, user } = this.state;
+    const { isLogin } = this.props;
+    const { addForm } = this.state;
+
     return (
       <Router>
         <div className="App">
-          <p className="h1">Hi there (APP FRONT)!!!</p>
+          <Header />
+          <Footer displayForm={this.displayForm} addForm={addForm} />
           <Switch>
             <Route
               exact
               path="/"
               render={() => (
-                <Header loggedInStatus={isLoggedIn} />
+                isLogin ? (
+                  <ActivityForm />
+                ) : (
+                  <Login />
+                )
               )}
             />
             <Route
               exact
               path="/login"
               render={() => (
-                <Login handleLogin={this.handleLogIn} loggedInStatus={isLoggedIn} user={user} />
+                <Login />
+
               )}
             />
             <Route
               exact
               path="/signup"
               render={() => (
-                <Signup handleLogin={this.handleLogIn} loggedInStatus={isLoggedIn} />
+                <Signup />
               )}
             />
             <Route
               exact
               path="/workpage"
               render={() => (
-                <WorkPage />
+                isLogin ? (
+                  <ActivityForm />
+                )
+                  : (
+                    <div className="login-access">
+                      <p>Sign in please</p>
+                    </div>
+                  )
+              )}
+
+            />
+            <Route
+              path="/activity/:id"
+              render={({ match }) => (
+                isLogin ? (
+                  <div className="route-trackings">
+                    <TrackingForm match={match} displayForm={this.displayForm} addForm={addForm} />
+                    <Footer displayForm={this.displayForm} addForm={addForm} match={match} />
+                  </div>
+                )
+
+                  : (
+                    <div className="login-access">
+                      <p>Sign in please</p>
+                    </div>
+                  )
               )}
             />
           </Switch>
-          <Footer />
         </div>
       </Router>
     );
   }
 }
+App.propTypes = {
+  isLogin: PropTypes.bool,
+  loginStatus: PropTypes.func,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    password: PropTypes.string,
+    username: PropTypes.string,
+  }),
+};
 
-export default App;
+App.defaultProps = {
+  isLogin: false,
+  loginStatus: () => {},
+  user: {},
+};
+
+const mapStateToProps = (state) => ({
+  isLogin: state.user.isLogin,
+  user: state.user,
+  illness: state.illness,
+});
+const mapDispatchToProps = (dispatch) => ({
+  loginStatus: () => dispatch(loginStatus()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);
