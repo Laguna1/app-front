@@ -22,7 +22,7 @@ export const createItem = (data) => async (dispatch) => {
   try {
     const response = await axios({
       method: 'POST',
-      url: `https://localhost:3000/users/${data.userId}/activities/${data.activityId}/trackings `,
+      url: `https://final-api-backend.herokuapp.com/users/${data.userId}/activities/${data.activityId}/trackings `,
       data,
       crossdomain: true,
       withCredentials: true,
@@ -45,7 +45,7 @@ export const deleteItem = (data) => async (dispatch) => {
     dispatch({ type: DELETE_ITEM, payload: data });
     const response = await axios({
       method: 'DELETE',
-      url: `https://localhost:3001/users/${data.userId}/activities/${data.activityId}/trackings/${data.id}`,
+      url: `https://final-api-backend.herokuapp.com/users/${data.userId}/activities/${data.activityId}/trackings/${data.id}`,
       data,
       crossdomain: true,
       withCredentials: true,
@@ -61,7 +61,7 @@ export const updateItem = (data) => async (dispatch) => {
     dispatch({ type: UPDATE_ITEM, payload: data });
     const response = await axios({
       method: 'PATCH',
-      url: `https://localhost:3000/users/${data.userId}/activities/${data.activityId}/trackings/${data.id}`,
+      url: `https://final-api-backend.herokuapp.com/users/${data.userId}/activities/${data.activityId}/trackings/${data.id}`,
       data,
       crossdomain: true,
       withCredentials: true,

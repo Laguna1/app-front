@@ -4,12 +4,17 @@
   margin: 0 auto;
 }
 
-.signup h2 {
+.signup h2,
+p {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 2.5em;
   color: rgb(65, 181, 232);
   margin-top: 100px;
+}
+
+p {
+  font-size: 1em;
 }
 
 .signup form {
@@ -22,6 +27,7 @@
   margin: 10px 0;
   height: 50px;
   width: 400px;
+  font-size: 1em;
   border: 3px solid rgb(65, 181, 232);
 }
 

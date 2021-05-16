@@ -151,7 +151,7 @@ class Trackings extends React.Component {
                   </div>
                   <div className="distance">
                     <p>
-                      distance:
+                      Distance:
                     </p>
                     <p>
                       <i className="fa fa-meter" />
@@ -161,19 +161,19 @@ class Trackings extends React.Component {
                   </div>
                   <div className="distance">
                     <p>
-                      pulse:
+                      Pulse:
                     </p>
                     <p>{item.pulse}</p>
                   </div>
                   <div className="distance">
                     <p>
-                      calories:
+                      Calories:
                     </p>
                     <p>{item.calories}</p>
                   </div>
                   <div className="rate">
                     <p>
-                      rate:
+                      Rate:
                     </p>
                     <p>{item.rate}</p>
                   </div>

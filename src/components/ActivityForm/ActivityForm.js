@@ -15,13 +15,13 @@ class ActivityForm extends React.Component {
   }
 
   componentDidMount = () => {
-    const { actionToPerform, buttonId, activity } = this.props;
+    const { actionToPerform, buttonId, activities } = this.props;
     if (actionToPerform === 'Save Changes') {
-      const activ = activity.filter((x) => x.id.toString() === buttonId);
+      const activity = activities.filter((x) => x.id.toString() === buttonId);
       this.setState({
-        name: activ[0].name,
-        place: activ[0].place,
-        intensity: activ[0].intensity,
+        name: activity[0].name,
+        place: activity[0].place,
+        intensity: activity[0].intensity,
       });
     }
   }
@@ -71,9 +71,9 @@ class ActivityForm extends React.Component {
   render() {
     const { name, place, intensity } = this.state;
     const {
-      actionToPerform, activity, buttonId, changeEditForm, changeAddForm,
+      actionToPerform, activities, buttonId, changeEditForm, changeAddForm,
     } = this.props;
-    const activ = activity.filter((x) => x.id.toString() === buttonId);
+    const activity = activities.filter((x) => x.id.toString() === buttonId);
     return (
       <div>
         <h3>
@@ -86,7 +86,7 @@ class ActivityForm extends React.Component {
           onSubmit={
            actionToPerform === 'Add'
              // eslint-disable-next-line max-len
-             ? () => this.handleSubmit(name, place, intensity) : () => this.handleUpdate(activ[0].id)
+             ? () => this.handleSubmit(name, place, intensity) : () => this.handleUpdate(activity[0].id)
 }
         >
           <div className="one-parameter">
@@ -97,18 +97,18 @@ class ActivityForm extends React.Component {
                 id="name"
                 type="text"
                 name="name"
-                defaultValue={buttonId === '0' ? name : activ[0].name}
+                defaultValue={buttonId === '0' ? name : activity[0].name}
                 onChange={this.handleChangeName}
               />
             </label>
           </div>
           <div className="one-parameter">
             <label htmlFor="place">
-              Description:
+              Place:
               <textarea
                 id="place"
                 name="place"
-                defaultValue={buttonId === '0' ? place : activ[0].place}
+                defaultValue={buttonId === '0' ? place : activity[0].place}
                 onChange={this.handleChangePlace}
               />
             </label>
@@ -116,11 +116,11 @@ class ActivityForm extends React.Component {
           </div>
           <div className="one-parameter">
             <label htmlFor="intensity">
-              Description:
+              Intensity:
               <textarea
                 id="intensity"
                 name="intensity"
-                defaultValue={buttonId === '0' ? intensity : activ[0].intensity}
+                defaultValue={buttonId === '0' ? intensity : activity[0].intensity}
                 onChange={this.handleChangeIntensity}
               />
             </label>
@@ -142,7 +142,7 @@ ActivityForm.propTypes = {
   addActivity: PropTypes.func,
   actionToPerform: PropTypes.string,
   changeAddForm: PropTypes.func,
-  activity: PropTypes.instanceOf(Array),
+  activities: PropTypes.instanceOf(Array),
   buttonId: PropTypes.string,
   updateActivity: PropTypes.func,
   changeEditForm: PropTypes.func,
@@ -158,7 +158,7 @@ ActivityForm.defaultProps = {
   changeAddForm: () => {},
   addActivity: () => {},
   actionToPerform: '',
-  activity: [],
+  activities: [],
   buttonId: '0',
   updateActivity: () => {},
   changeEditForm: () => {},

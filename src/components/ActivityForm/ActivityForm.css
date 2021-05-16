@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+.tracking {
+  font-size: 2em;
+  font-weight: bold;
+  color: rgb(173, 220, 145);
+}
+
 .one-form {
   font-family: 'Open Sans', sans-serif;
   font-size: 4.4vw;
-  border: 0.5px solid rgb(218, 213, 213);
+  border: 1px solid rgb(65, 181, 232);
   background-color: white;
-  margin: 0 15px 12px 15px;
+  margin: 2% 15%;
   border-radius: 11px;
   flex-direction: column;
   align-items: center;
@@ -30,8 +36,8 @@
 
 .one-parameter input,
 .one-parameter textarea {
-  border: 1px solid gray;
-  width: 50vw;
+  border: 1px solid rgb(65, 181, 232);
+  width: 33vw;
   border-radius: 5px;
   margin-right: 10px;
   font-family: 'Open Sans', sans-serif;
@@ -74,7 +80,7 @@
 }
 
 .buttons-form button:first-child {
-  background-color: rgb(173, 220, 145);
+  background-color: rgb(65, 181, 232);
 }
 
 .buttons-form button:last-child {

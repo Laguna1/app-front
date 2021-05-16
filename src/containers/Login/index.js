@@ -43,7 +43,7 @@ class Login extends React.Component {
     const response = await loginUser({ username, password });
     const { error } = this.props;
 
-    if (response.data.status === 401) {
+    if (response.data.status === 403) {
       this.setState({
         errors: error,
       });
