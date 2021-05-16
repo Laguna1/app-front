@@ -1,17 +1,19 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Route, Switch,
-} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
-import './App.css';
 import Header from '../Header/Header';
+import Login from '../../containers/Login';
+import Signup from '../../containers/Signup';
+import Activity from '../../containers/Activity';
+import Trackings from '../../containers/Tracking';
 import Footer from '../Footer/Footer';
-import Login from '../../containers/entryGroup/Login';
-import Signup from '../../containers/entryGroup/Signup';
-import ActivityForm from '../../containers/activityGroup/ActivityForm';
-import TrackingForm from '../../containers/trackingGroup/TrackingForm';
 import { loginStatus } from '../../actions/user';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -48,7 +50,7 @@ class App extends React.Component {
               path="/"
               render={() => (
                 isLogin ? (
-                  <ActivityForm />
+                  <Activity />
                 ) : (
                   <Login />
                 )
@@ -59,7 +61,6 @@ class App extends React.Component {
               path="/login"
               render={() => (
                 <Login />
-
               )}
             />
             <Route
@@ -71,14 +72,14 @@ class App extends React.Component {
             />
             <Route
               exact
-              path="/workpage"
+              path="/main"
               render={() => (
                 isLogin ? (
-                  <ActivityForm />
+                  <Activity />
                 )
                   : (
                     <div className="login-access">
-                      <p>Sign in please</p>
+                      <p>Please Sign In</p>
                     </div>
                   )
               )}
@@ -89,14 +90,15 @@ class App extends React.Component {
               render={({ match }) => (
                 isLogin ? (
                   <div className="route-trackings">
-                    <TrackingForm match={match} displayForm={this.displayForm} addForm={addForm} />
+                    <Trackings match={match} displayForm={this.displayForm} addForm={addForm} />
                     <Footer displayForm={this.displayForm} addForm={addForm} match={match} />
                   </div>
                 )
 
                   : (
                     <div className="login-access">
-                      <p>Sign in please</p>
+                      <p>Please Sign In</p>
+
                     </div>
                   )
               )}
@@ -126,7 +128,7 @@ App.defaultProps = {
 const mapStateToProps = (state) => ({
   isLogin: state.user.isLogin,
   user: state.user,
-  illness: state.illness,
+  activity: state.activity,
 });
 const mapDispatchToProps = (dispatch) => ({
   loginStatus: () => dispatch(loginStatus()),

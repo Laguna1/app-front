@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+header {
+  flex-shrink: 0;
+  display: flex;
+  background: rgb(65, 181, 232);
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  max-height: 10%;
+}
+
 .header {
-  background-color: lightblue;
-  color: green;
+  text-align: center;
+  letter-spacing: 0.6px;
+  font-size: 2vw;
+  margin-top: 1%;
 }

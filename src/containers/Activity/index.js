@@ -7,7 +7,7 @@ import {
   fetchUserActivity, createActivity, deleteActivity,
 } from '../../actions/activity';
 import { loginStatus } from '../../actions/user';
-import './ActivityForm.css';
+import './activity.css';
 
 class Activity extends React.Component {
   constructor(props) {
@@ -35,11 +35,13 @@ class Activity extends React.Component {
     || editForm !== nextState.editForm;
   }
 
-  addActivity = (name, description) => {
+  addActivity = (name, place, intensity) => {
     const { createActivity, user } = this.props;
     const { addForm } = this.state;
     const userId = user.user.id;
-    createActivity({ name, description, userId });
+    createActivity({
+      name, place, intensity, userId,
+    });
     this.setState({
       addForm: !addForm,
     });
@@ -60,7 +62,7 @@ class Activity extends React.Component {
     });
   }
 
-  deleteActivity = (id) => {
+  deleteActivity= (id) => {
     const { user } = this.props;
     const { deleteActivity } = this.props;
     const userId = user.user.id;
@@ -90,21 +92,20 @@ class Activity extends React.Component {
        <main className="main">
          <button type="button" className="add-activity" onClick={this.displayForm}>+</button>
          <div className="activities">
-           { !editForm && !addForm && <h3>Your Activities</h3>}
+           { !editForm && !addForm && <h3>Your activities</h3>}
 
-           {activity.length === 0 && !addForm && <div className="tracking">Start adding a illness you want to track here!</div>}
-           {activity.map((activ) => (
-             <div key={activ.id}>
+           {activity.length === 0 && !addForm && <div className="tracking">Add activities you want to track here!</div>}
+           {activity.map((activity) => (
+             <div key={activity.id}>
                { !editForm && !addForm && (
-               <div className="one-activity">
+               <div className="simple-act">
                  <div className="buttons">
-                   <button type="button" onClick={this.displayEdit}>
-                     <i className="fa fa-pencil-square-o" id={activity.id} />
-                   </button>
                    <button type="button" onClick={() => this.deleteActivity(activity.id)}>
                      <i className="fa fa-trash-o" />
                    </button>
-
+                   <button type="button" onClick={this.displayEdit}>
+                     <i className="fa fa-pencil-square-o" id={activity.id} />
+                   </button>
                  </div>
                  <div className="activity-info">
                    <Link to={{
@@ -116,13 +117,15 @@ class Activity extends React.Component {
                    >
                      {!editForm && (
                      <div>
-                       <div className="activity-name">
+                       <div className="act-name">
                          <p>Name:</p>
                          <p>Place:</p>
+                         <p>Intensity:</p>
                        </div>
-                       <div className="activity-place">
+                       <div className="act-info">
                          <p>{activity.name}</p>
                          <p>{activity.place}</p>
+                         <p>{activity.intensity}</p>
                        </div>
                      </div>
                      )}
@@ -134,7 +137,7 @@ class Activity extends React.Component {
              </div>
            ))}
          </div>
-         <div className="new-activity">
+         <div className="newactivity">
            {addForm && <ActivityForm addActivity={this.addActivity} actionToPerform="Add" changeAddForm={this.changeAddForm} />}
          </div>
        </main>
@@ -165,8 +168,8 @@ Activity.propTypes = {
     }),
   }),
   activity: PropTypes.arrayOf(PropTypes.shape({
+    description: PropTypes.string,
     name: PropTypes.string,
-    place: PropTypes.string,
   })),
 };
 

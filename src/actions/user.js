@@ -9,7 +9,7 @@ export const LOGGED_IN = 'LOGGED IN';
 export const LOGGED_IN_ERROR = 'LOGGED_IN_ERROR';
 
 export const loginStatus = () => (dispatch) => {
-  axios.get('https://final-api-backend.herokuapp.com/logged_in',
+  axios.get('https://localhost:3000/logged_in',
     { withCredentials: true })
     .then((response) => (
       response.data))
@@ -54,7 +54,7 @@ export const createUser = (newUser) => async (dispatch) => {
 export const loginUser = (user) => async (dispatch) => {
   let response = {};
   try {
-    response = await axios.post('https://final-api-backend.herokuapp.com/login', { user }, { withCredentials: true });
+    response = await axios.post('https://localhost:3000/login', { user }, { withCredentials: true });
     dispatch({
       type: LOGIN_USER,
       payload: response.data,
@@ -74,7 +74,7 @@ export const logOutUser = () => async (dispatch) => {
     dispatch({ type: LOGOUT_USER, payload: {} });
     const response = await axios({
       method: 'DELETE',
-      url: 'https://final-api-backend.herokuapp.com/logout',
+      url: 'https://localhost:3000/logout',
       data: { user: {} },
       crossdomain: true,
       withCredentials: true,

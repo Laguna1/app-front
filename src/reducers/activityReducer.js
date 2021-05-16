@@ -19,8 +19,9 @@ export default function activityReducer(state = [], action) {
       objIndex = state.findIndex((obj) => obj.id === action.payload.id);
       updateObj = {
         ...state[objIndex],
-        description: action.payload.description,
         name: action.payload.name,
+        place: action.payload.place,
+        intensity: action.payload.intensity,
       };
 
       updatedState = [

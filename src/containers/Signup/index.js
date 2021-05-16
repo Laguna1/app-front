@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import './SignUpForm.css';
+import './Signup.css';
 import { createUser } from '../../actions/user';
 
 class Signup extends Component {
@@ -27,28 +27,28 @@ class Signup extends Component {
     });
   }
 
-   handleSubmit= async (e) => {
-     e.preventDefault();
-     const {
-       username, password,
-     } = this.state;
-     const { createUser } = this.props;
+  handleSubmit= async (e) => {
+    e.preventDefault();
+    const {
+      username, password,
+    } = this.state;
+    const { createUser } = this.props;
 
-     const response = await createUser({ username, password });
-     if (response && response.status === 200) {
-       const { history } = this.props;
-       history.push('/workpage');
-     } else {
-       const { error } = this.props;
-       this.setState({
-         errors: error,
-       });
-     }
-   }
+    const response = await createUser({ username, password });
+    if (response && response.status === 200) {
+      const { history } = this.props;
+      history.push('/main');
+    } else {
+      const { error } = this.props;
+      this.setState({
+        errors: error,
+      });
+    }
+  }
 
    handleErrors = () => {
      const { errors } = this.state;
-     setTimeout(() => this.setState({ errors: '' }), 3000);
+     //  setTimeout(() => this.setState({ errors: '' }), 3000);
      return (
        <ul>
          {errors.map((error) => <li key={error}>{error}</li>)}
@@ -61,7 +61,7 @@ class Signup extends Component {
        username, errors, password,
      } = this.state;
      return (
-       <section className="signup-form">
+       <section className="signup">
          <div className="errors-div">
            {errors ? this.handleErrors() : null}
          </div>
@@ -84,7 +84,7 @@ class Signup extends Component {
              required
            />
            <button placeholder="submit" type="submit">
-             Sign In
+             Sign Up
            </button>
          </form>
        </section>

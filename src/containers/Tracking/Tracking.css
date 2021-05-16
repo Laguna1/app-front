@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.trackings {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.trackings h3 {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-size: 5.5vw;
+  margin: 10px;
+}
+
+.trackings-buttons {
+  display: flex;
+  align-items: center;
+  top: 3px;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.add-item,
+.go-back {
+  color: white;
+  background: none;
+  border: none;
+}
+
+.add-item {
+  font-size: 12vw;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+.go-back {
+  font-size: 6.8vw;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.go-back a {
+  color: white;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.date p {
+  font-size: 4vw;
+  margin: 7px 0 0 13px;
+}
+
+.date p i {
+  padding-right: 5px;
+}
+
+.date div button {
+  border: none;
+  background: none;
+  font-size: 5.5vw;
+  padding: 0 3px;
+  cursor: pointer;
+}
+
+.duration {
+  font-size: 3.7vw;
+  display: flex;
+  align-items: center;
+}
+
+.duration p {
+  margin: 8px 0 5px 0;
+  padding-left: 6px;
+}
+
+.duration p:first-child {
+  padding-left: 29px;
+}
+
+.duration p:last-child {
+  font-size: 4.5vw;
+}
+
+.duration p i {
+  padding: 0 5px;
+}
+
+.distance p i {
+  padding-right: 5px;
+}
+
+.distance p:first-child {
+  padding-left: 28px;
+}

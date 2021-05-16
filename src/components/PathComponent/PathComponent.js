@@ -26,6 +26,6 @@ PathComponent.defaultProps = {
   icon: '',
   linkText: '',
   handleClick: () => {},
-};
 
+};
 export default PathComponent;

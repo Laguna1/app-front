@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import './Footer.css';
+import PathComponent from '../PathComponent/PathComponent';
 import { logOutUser } from '../../actions/user';
-import PathComponent from '../PathComponent';
 
 const Footer = ({
   isLogin, logOut, history, displayForm, match,
@@ -23,13 +23,13 @@ const Footer = ({
 
   return (
     <nav className="menu">
-      <PathComponent path="workpage" icon="fa-bar-chart" linkText="Activities" />
+      <PathComponent path="main" icon="fas fa-walking" />
 
       {isLogin && match.path === '/activity/:id' ? (
         <div className="icons icon-btn">
           <button type="button" onClick={displayAddForm}>
             <i className="fa fa-line-chart" />
-            <p className="add-trackings">Add Trackings</p>
+            <p className="add-trackings">Add Details</p>
           </button>
         </div>
       ) : null}
@@ -37,8 +37,8 @@ const Footer = ({
       { !isLogin
         && (
         <>
-          <PathComponent path="login" icon="fa-sign-in" linkText="Sign In" />
-          <PathComponent path="signup" icon="fa-user-circle" linkText="Sign Up" />
+          <PathComponent path="login" icon="fas fa-sign-in" />
+          <PathComponent path="signup" icon="fas fa-user-plus" />
         </>
         )}
       { isLogin && (

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './LoginForm.css';
+import './Login.css';
 import { loginUser } from '../../actions/user';
 
 class Login extends React.Component {
@@ -52,7 +52,7 @@ class Login extends React.Component {
 
   handleErrors = () => {
     const { errors } = this.state;
-    setTimeout(() => this.setState({ errors: '' }), 3000);
+    // setTimeout(() => this.setState({ errors: '' }), 3000);
     if (errors.length > 0) {
       return (
         <div>
@@ -68,7 +68,7 @@ class Login extends React.Component {
   render() {
     const { username, password, errors } = this.state;
     return (
-      <section className="login-form">
+      <section className="login">
         <div>
           <ul id="errors-div" className="errors-div">
             {errors ? this.handleErrors() : null}
@@ -91,11 +91,11 @@ class Login extends React.Component {
             onChange={this.handleChangePassword}
           />
           <button className="btn-login" placeholder="submit" type="submit">
-            Sign in
+            Sign In
           </button>
-          <p>Not registered yet?</p>
+
           <button type="button" className="btn-signup">
-            <Link to="/signup">Create an account</Link>
+            <Link to="/signup">New Account</Link>
           </button>
 
         </form>
