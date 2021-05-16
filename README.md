@@ -2,6 +2,8 @@
 
 # app-front
 
+[Live Demo](app-front.netlify.app)
+
 ### Author
 
 👤 **Oksana Petrova**
