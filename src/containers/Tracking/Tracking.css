@@ -9,13 +9,13 @@
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   font-size: 3vw;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .trackings-buttons {
   display: flex;
   align-items: center;
-  top: 15px;
+  top: 2em;
   position: absolute;
   width: 100%;
   justify-content: space-between;

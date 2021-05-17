@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityForm renders correctly 1`] = `
+<div>
+  <h3>
+    
+     
+    Activity
+  </h3>
+  <form
+    className="one-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="one-parameter"
+    >
+      <label
+        htmlFor="name"
+      >
+        Name:
+        <input
+          defaultValue=""
+          id="name"
+          name="name"
+          onChange={[Function]}
+          required={true}
+          type="text"
+        />
+      </label>
+    </div>
+    <div
+      className="one-parameter"
+    >
+      <label
+        htmlFor="place"
+      >
+        Place:
+        <input
+          defaultValue=""
+          id="place"
+          name="place"
+          onChange={[Function]}
+        />
+      </label>
+    </div>
+    <div
+      className="one-parameter"
+    >
+      <label
+        htmlFor="intensity"
+      >
+        Intensity:
+        <input
+          defaultValue=""
+          id="intensity"
+          name="intensity"
+          onChange={[Function]}
+        />
+      </label>
+    </div>
+    <div
+      className="buttons-form"
+    />
+  </form>
+</div>
+`;

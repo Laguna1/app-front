@@ -117,7 +117,7 @@ class TrackingForm extends React.Component {
         <form className="item">
 
           <div className="form-div">
-            <div className="date-div">
+            <div className="item-detail date-div">
               <label htmlFor="date">
                 Date:
                 <input
@@ -129,9 +129,9 @@ class TrackingForm extends React.Component {
                 />
               </label>
             </div>
-            <div className="duration-div">
+            <div className="item-detail duration-div">
               <label htmlFor="duration">
-                100Duration (min):
+                Duration (min):
                 <input
                   id="duration"
                   type="number"
@@ -142,7 +142,7 @@ class TrackingForm extends React.Component {
               </label>
             </div>
 
-            <div className="distance-div">
+            <div className="item-detail distance-div">
               <label htmlFor="distance">
                 Distance (m):
                 <input
@@ -154,7 +154,7 @@ class TrackingForm extends React.Component {
                 />
               </label>
             </div>
-            <div className="pulse-div">
+            <div className="item-detail pulse-div">
               <label htmlFor="pulse">
                 Pulse:
                 <input
@@ -166,7 +166,7 @@ class TrackingForm extends React.Component {
                 />
               </label>
             </div>
-            <div className="calories-div">
+            <div className="item-detail calories-div">
               <label htmlFor="calories">
                 Calories burned (cal):
                 <input
@@ -179,7 +179,7 @@ class TrackingForm extends React.Component {
               </label>
             </div>
             <div className="rate-div">
-              <span>Rate: </span>
+              <span className="rate">Rate: </span>
               <input type="radio" id="option1" name="rate" value="🙂" checked={selectedOption === '🙂'} onChange={this.handleOptionChange} />
               <span role="img" aria-label="rate_0">🙂</span>
               <input type="radio" id="option2" name="rate" value="😐" checked={selectedOption === '😐'} onChange={this.handleOptionChange} />
