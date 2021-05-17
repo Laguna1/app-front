@@ -16,13 +16,14 @@ const PathComponent = ({
 );
 
 PathComponent.propTypes = {
-  path: PropTypes.string.isRequired,
+  path: PropTypes.string,
   icon: PropTypes.string,
   linkText: PropTypes.string,
   handleClick: PropTypes.func,
 };
 
 PathComponent.defaultProps = {
+  path: '',
   icon: '',
   linkText: '',
   handleClick: () => {},

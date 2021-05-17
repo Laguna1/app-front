@@ -109,16 +109,16 @@ class Trackings extends React.Component {
         <div className="trackings-buttons">
           <button type="button" className="go-back" onClick={this.displayInfo}>
             <Link to="/main">
-              <i className="fa fa-arrow-up" aria-hidden="true" />
+              <i className="fa fa-arrow-left" aria-hidden="true" />
             </Link>
           </button>
-          <button type="button" className="add-item" onClick={this.displayInfo}>+</button>
+          {/* <button type="button" className="add-item" onClick={this.displayInfo}>+</button> */}
         </div>
         {!addEdit && !addForm && (
-        <h3>
+        <h4>
           Tracking of activity`s details:
           {name && <span>{name}</span>}
-        </h3>
+        </h4>
         )}
         {trackings.map((item) => (
           <div key={item.id}>
@@ -144,9 +144,9 @@ class Trackings extends React.Component {
                       Duration:
                     </p>
                     <p>
-                      <i className="fa fa-clock" />
+                      <i className="fas fa-clock" />
                       {item.duration}
-                      hours:
+                      minutes:
                     </p>
                   </div>
                   <div className="distance">
@@ -167,7 +167,7 @@ class Trackings extends React.Component {
                   </div>
                   <div className="distance">
                     <p>
-                      Calories:
+                      100Calories:
                     </p>
                     <p>{item.calories}</p>
                   </div>

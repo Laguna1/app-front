@@ -26,12 +26,6 @@ export const createActivity = (data) => async (dispatch) => {
       data,
       crossdomain: true,
       withCredentials: true,
-      credentials: 'include',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Credentials': true,
-      },
     });
     dispatch({
       type: CREATE_ACTIVITY,

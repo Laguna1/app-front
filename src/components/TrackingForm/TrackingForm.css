@@ -6,14 +6,17 @@
 
 .item {
   font-family: 'Open Sans', sans-serif;
-  display: flex;
-  justify-content: flex-end;
   border: 1px solid gray;
   background-color: white;
   margin: 0 15px 12px 15px;
   border-radius: 11px;
-  flex-direction: column;
   font-size: 3.5vw;
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 input::-webkit-outer-spin-button,
@@ -28,43 +31,26 @@ input::-webkit-inner-spin-button {
   font-size: 3.2vw;
 }
 
-.date-old {
-  display: flex;
-  margin: 8px 0 8px 7px;
-  justify-content: center;
-}
-
 .date-div,
-.duration-div,
-.pulse-div,
-.calories-div {
+.duration-div {
   display: flex;
   align-items: center;
-}
-
-.date-div {
-  margin-right: 8px;
 }
 
 .date-div input,
 .duration-div input,
 .pulse-div input,
-.calories-div {
+.calories-div input {
   width: 32vw;
   font-size: 3.2vw;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 6px;
-}
-
-.duration-div input {
-  width: 9vw;
 }
 
 .rate-div {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-  align-items: center;
 }
 
 .rate-div span {

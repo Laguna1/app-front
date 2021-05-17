@@ -8,8 +8,8 @@ class TrackingForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: '2020-13-05',
-      distance: 5000,
+      date: '',
+      distance: 1,
       duration: 60,
       pulse: 80,
       calories: 150,
@@ -109,44 +109,42 @@ class TrackingForm extends React.Component {
 
     return (
       <div className="t-form">
-        <h3>
+        <h4>
           {actionToPerform}
           {' '}
-          Tracking for Activity
-        </h3>
+          Tracking for this Activity/TForm
+        </h4>
         <form className="item">
 
           <div className="form-div">
-            <div className="date-old">
-              <div className="date-div">
-                <label htmlFor="date">
-                  Date:
-                  <input
-                    id="date"
-                    type="date"
-                    name="date"
-                    defaultValue={buttonId === '0' ? date : track[0].date.slice(0, 10)}
-                    onChange={this.handleChangeDate}
-                  />
-                </label>
-              </div>
-              <div className="duration-div">
-                <label htmlFor="duration">
-                  Duration:
-                  <input
-                    id="duration"
-                    type="number"
-                    name="duration"
-                    defaultValue={buttonId === '0' ? duration : track[0].duration}
-                    onChange={this.handleChangeDuration}
-                  />
-                </label>
-                <span>hours</span>
-              </div>
+            <div className="date-div">
+              <label htmlFor="date">
+                Date:
+                <input
+                  id="date"
+                  type="date"
+                  name="date"
+                  defaultValue={buttonId === '0' ? date : track[0].date.slice(0, 10)}
+                  onChange={this.handleChangeDate}
+                />
+              </label>
             </div>
+            <div className="duration-div">
+              <label htmlFor="duration">
+                100Duration (min):
+                <input
+                  id="duration"
+                  type="number"
+                  name="duration"
+                  defaultValue={buttonId === '0' ? duration : track[0].duration}
+                  onChange={this.handleChangeDuration}
+                />
+              </label>
+            </div>
+
             <div className="distance-div">
               <label htmlFor="distance">
-                Distance:
+                Distance (m):
                 <input
                   id="distance"
                   type="number"
@@ -155,34 +153,30 @@ class TrackingForm extends React.Component {
                   onChange={this.handleChangeDistance}
                 />
               </label>
-              <span>km</span>
             </div>
-
-            <div className="pulse">
-              <p>Pulse:</p>
-              <div className="pulse-div">
+            <div className="pulse-div">
+              <label htmlFor="pulse">
+                Pulse:
                 <input
                   id="pulse"
-                  type="text"
+                  type="number"
                   name="pulse"
                   defaultValue={buttonId === '0' ? '' : track[0].pulse[0]}
-                  placeholder="Your pulse?"
-                  onChange={(e) => this.handleChangePulse(e, 0, 0)}
+                  onChange={this.handleChangePulse}
                 />
-              </div>
+              </label>
             </div>
-            <div className="calories">
-              <p>Calories burned:</p>
-              <div className="calories-div">
+            <div className="calories-div">
+              <label htmlFor="calories">
+                Calories burned (cal):
                 <input
                   id="calories"
-                  type="text"
+                  type="number"
                   name="calories"
-                  placeholder="Burned calories"
                   defaultValue={buttonId === '0' ? '' : track[0].calories[0]}
-                  onChange={(e) => this.handleChangeCalories(e, 0)}
+                  onChange={this.handleChangeCalories}
                 />
-              </div>
+              </label>
             </div>
             <div className="rate-div">
               <span>Rate: </span>

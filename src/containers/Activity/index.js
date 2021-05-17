@@ -100,11 +100,11 @@ class Activity extends React.Component {
                { !editForm && !addForm && (
                <div className="simple-act">
                  <div className="buttons">
-                   <button type="button" onClick={() => this.deleteActivity(activity.id)}>
-                     <i className="fa fa-trash-o" />
-                   </button>
                    <button type="button" onClick={this.displayEdit}>
                      <i className="fa fa-pencil-square-o" id={activity.id} />
+                   </button>
+                   <button type="button" onClick={() => this.deleteActivity(activity.id)}>
+                     <i className="fa fa-trash-o" />
                    </button>
                  </div>
                  <div className="activity-info">
@@ -168,8 +168,9 @@ Activity.propTypes = {
     }),
   }),
   activity: PropTypes.arrayOf(PropTypes.shape({
-    description: PropTypes.string,
     name: PropTypes.string,
+    place: PropTypes.string,
+    intensity: PropTypes.string,
   })),
 };
 

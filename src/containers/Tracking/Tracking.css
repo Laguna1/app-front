@@ -2,19 +2,20 @@
 
 .trackings {
   font-family: 'Open Sans', sans-serif;
+  color: rgb(173, 220, 145);
 }
 
-.trackings h3 {
+.trackings h4 {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  font-size: 5.5vw;
-  margin: 10px;
+  font-size: 3vw;
+  margin-top: 2em;
 }
 
 .trackings-buttons {
   display: flex;
   align-items: center;
-  top: 3px;
+  top: 15px;
   position: absolute;
   width: 100%;
   justify-content: space-between;
@@ -35,9 +36,9 @@
 }
 
 .go-back {
-  font-size: 6.8vw;
+  font-size: 4vw;
   cursor: pointer;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .go-back a {
