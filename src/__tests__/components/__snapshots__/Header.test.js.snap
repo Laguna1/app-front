@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<header>
+  <div
+    className="header"
+  >
+    <h2>
+      Tracking App
+    </h2>
+  </div>
+</header>
+`;
