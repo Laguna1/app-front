@@ -105,7 +105,7 @@ class ActivityForm extends React.Component {
           <div className="one-parameter">
             <label htmlFor="place">
               Place:
-              <textarea
+              <input
                 id="place"
                 name="place"
                 defaultValue={buttonId === '0' ? place : activity[0].place}
@@ -117,7 +117,7 @@ class ActivityForm extends React.Component {
           <div className="one-parameter">
             <label htmlFor="intensity">
               Intensity:
-              <textarea
+              <input
                 id="intensity"
                 name="intensity"
                 defaultValue={buttonId === '0' ? intensity : activity[0].intensity}
