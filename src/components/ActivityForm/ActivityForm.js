@@ -95,7 +95,6 @@ class ActivityForm extends React.Component {
               <input
                 required
                 id="name"
-                type="text"
                 name="name"
                 defaultValue={buttonId === '0' ? name : act[0].name}
                 onChange={this.handleChangeName}
