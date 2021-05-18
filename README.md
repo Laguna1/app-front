@@ -1,14 +1,54 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # app-front
+- The aim of this project was to create a mobile application for tracking certain things and present  a list of parts to measure.
+This project is an external part of the "Tracking App" application, and for the server part the Rails application with the necessary endpoints is used.
 
+- User can to sign up
 ![Screen](./src/assets/img/1image.png)
+-User can to sign in in existant account
 ![Screen](./src/assets/img/2image.png)
+- User can create new activity, then update or delete it
 ![Screen](./src/assets/img/3image.png)
+- User can view a list of their activities
 ![Screen](./src/assets/img/4image.png)
+- User can create new activity, then update or delete it
 ![Screen](./src/assets/img/5image.png)
 
-[Live Demo](https://app-front.netlify.app)1image.png
+### [Live Demo](https://app-front.netlify.app)
+
+### Built With
+- Javascript ES6
+- React
+- Redux
+- HTML
+- CSS
+- VSCode
+
+### Getting Started
+To get a local copy up and running follow these simple example steps.
+- `git clone https://github.com/Laguna1/app-front`
+- `cd app-front`
+
+### Setup
+
+Instal dependensies with:
+
+- `npm install`
+
+### Usage
+
+Start server with:
+
+- `npm start`
+
+Open `http://localhost:3000/` in your browser.
+
+### Run tests
+
+- `npm test`
+
+
 
 ### Author
 
