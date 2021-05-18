@@ -3,6 +3,7 @@
 # app-front
 - The aim of this project was to create a mobile application for tracking certain things and present  a list of parts to measure.
 This project is an external part of the "Tracking App" application, and for the server part the Rails application with the necessary endpoints is used.
+The server side for this application is available [here: 'api-back'](https://final-api-backend.herokuapp.com/)
 
 - User can to sign up
 ![Screen](./src/assets/img/1image.png)
