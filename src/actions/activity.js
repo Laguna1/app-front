@@ -1,4 +1,7 @@
 import axios from 'axios';
+import {
+  fetchUserActivityUrl, createActivityUrl, updateActivityUrl, deleteActivityUrl,
+} from './api';
 
 export const DISPLAY_FETCHED_ACTIVITY = 'DISPLAY FETCHED ACTIVITY';
 export const CREATE_ACTIVITY = 'CREATE ACTIVITY';
@@ -6,7 +9,7 @@ export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const CREATE_ACTIVITY_ERROR = 'CREATE ACTIVITY ERROR';
 export const UPDATE_ACTIVITY = 'UPDATE ACTIVITY';
 
-export const fetchUserActivity = (id) => (dispatch) => axios.get(`https://localhost:3000/users/${id}/activities`)
+export const fetchUserActivity = (id) => (dispatch) => axios.get(fetchUserActivityUrl(id))
   .then((response) => response.data)
   .then((data) => {
     dispatch({
@@ -22,10 +25,14 @@ export const createActivity = (data) => async (dispatch) => {
   try {
     const response = await axios({
       method: 'POST',
-      url: `https://localhost:3000/users/${data.userId}/activities`,
+      url: createActivityUrl(data.user_id),
       data,
       crossdomain: true,
-      withCredentials: true,
+      withCredentials: false,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      },
     });
     dispatch({
       type: CREATE_ACTIVITY,
@@ -45,7 +52,7 @@ export const deleteActivity = (data) => async (dispatch) => {
     dispatch({ type: DELETE_ACTIVITY, payload: data });
     const response = await axios({
       method: 'DELETE',
-      url: `https://localhost:3000/users/${data.userId}/activities/${data.id}`,
+      url: updateActivityUrl(data.userId, data.id),
       data,
       crossdomain: true,
       withCredentials: true,
@@ -61,7 +68,7 @@ export const updateActivity = (data) => async (dispatch) => {
     dispatch({ type: UPDATE_ACTIVITY, payload: data });
     const response = await axios({
       method: 'PATCH',
-      url: `https://localhost:3000/users/${data.userId}/activities/${data.id}`,
+      url: deleteActivityUrl(data.userId, data.id),
       data,
       crossdomain: true,
       withCredentials: true,

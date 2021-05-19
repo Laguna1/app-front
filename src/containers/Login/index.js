@@ -43,7 +43,7 @@ class Login extends React.Component {
     const response = await loginUser({ username, password });
     const { error } = this.props;
 
-    if (response.data.status === 401) {
+    if (response.data.status === 422) {
       this.setState({
         errors: error,
       });
@@ -52,7 +52,7 @@ class Login extends React.Component {
 
   handleErrors = () => {
     const { errors } = this.state;
-    // setTimeout(() => this.setState({ errors: '' }), 3000);
+    setTimeout(() => this.setState({ errors: '' }), 3000);
     if (errors.length > 0) {
       return (
         <div>

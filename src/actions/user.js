@@ -32,7 +32,7 @@ export const createUser = (newUser) => async (dispatch) => {
   try {
     response = await axios({
       method: 'POST',
-      url: 'https://final-api-backend.herokuapp.com/users',
+      url: 'https://localhost:3000/users',
       data: { user: newUser },
       crossdomain: true,
       withCredentials: true,
