@@ -38,9 +38,10 @@ class Activity extends React.Component {
   addActivity = (name, place, intensity) => {
     const { createActivity, user } = this.props;
     const { addForm } = this.state;
-    const userId = user.user.id;
+    /* eslint-disable camelcase */
+    const user_id = user.user.id;
     createActivity({
-      name, place, intensity, userId,
+      name, place, intensity, user_id,
     });
     this.setState({
       addForm: !addForm,
@@ -65,8 +66,8 @@ class Activity extends React.Component {
   deleteActivity= (id) => {
     const { user } = this.props;
     const { deleteActivity } = this.props;
-    const userId = user.user.id;
-    deleteActivity({ userId, id });
+    const user_id = user.user.id;
+    deleteActivity({ user_id, id });
   }
 
    changeEditForm = () => {
@@ -95,23 +96,23 @@ class Activity extends React.Component {
            { !editForm && !addForm && <h3>Your activities</h3>}
 
            {activity.length === 0 && !addForm && <div className="tracking">Add activities you want to track here!</div>}
-           {activity.map((activity) => (
-             <div key={activity.id}>
+           {activity.map((activ) => (
+             <div key={activ.id}>
                { !editForm && !addForm && (
                <div className="simple-act">
                  <div className="buttons">
                    <button type="button" onClick={this.displayEdit}>
-                     <i className="fa fa-pencil-square-o" id={activity.id} />
+                     <i className="fa fa-pencil-square-o" id={activ.id} />
                    </button>
-                   <button type="button" onClick={() => this.deleteActivity(activity.id)}>
+                   <button type="button" onClick={() => this.deleteActivity(activ.id)}>
                      <i className="fa fa-trash-o" />
                    </button>
                  </div>
                  <div className="activity-info">
                    <Link to={{
-                     pathname: `activity/${activity.id}`,
+                     pathname: `activity/${activ.id}`,
                      state: {
-                       nameactivity: activity.name,
+                       nameactiv: activ.name,
                      },
                    }}
                    >
@@ -123,9 +124,9 @@ class Activity extends React.Component {
                          <p>Intensity:</p>
                        </div>
                        <div className="act-info">
-                         <p>{activity.name}</p>
-                         <p>{activity.place}</p>
-                         <p>{activity.intensity}</p>
+                         <p>{activ.name}</p>
+                         <p>{activ.place}</p>
+                         <p>{activ.intensity}</p>
                        </div>
                      </div>
                      )}
@@ -133,7 +134,7 @@ class Activity extends React.Component {
                  </div>
                </div>
                )}
-               { editForm && activity.id.toString() === idActivity && <ActivityForm actionToPerform="Save Changes" buttonId={idActivity} changeEditForm={this.changeEditForm} />}
+               { editForm && activ.id.toString() === idActivity && <ActivityForm actionToPerform="Save Changes" buttonId={idActivity} changeEditForm={this.changeEditForm} />}
              </div>
            ))}
          </div>

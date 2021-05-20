@@ -17,11 +17,11 @@ class ActivityForm extends React.Component {
   componentDidMount = () => {
     const { actionToPerform, buttonId, activities } = this.props;
     if (actionToPerform === 'Save Changes') {
-      const activitity = activities.filter((x) => x.id.toString() === buttonId);
+      const activity = activities.filter((x) => x.id.toString() === buttonId);
       this.setState({
-        name: activitity[0].name,
-        place: activitity[0].place,
-        intensity: activitity[0].intensity,
+        name: activity[0].name,
+        place: activity[0].place,
+        intensity: activity[0].intensity,
       });
     }
   }
@@ -167,7 +167,7 @@ ActivityForm.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  activities: state.activitity,
+  activities: state.activity,
 });
 const mapDispatchToProps = (dispatch) => ({
   updateActivity: (data) => dispatch(updateActivity(data)),

@@ -84,6 +84,12 @@ export const logOutUser = () => async (dispatch) => {
       data: { user: {} },
       crossdomain: true,
       withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true,
+      },
     });
     return response;
   } catch (error) { return (error); }
