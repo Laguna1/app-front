@@ -2,20 +2,24 @@
 
 .trackings {
   font-family: 'Open Sans', sans-serif;
-  color: rgb(173, 220, 145);
+  color: orange;
 }
 
 .trackings h4 {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  font-size: 3vw;
+  font-size: 4vw;
   margin-top: 1em;
+}
+
+.trackings h4 span {
+  margin-left: 15px;
 }
 
 .trackings-buttons {
   display: flex;
   align-items: center;
-  top: 2em;
+  top: 2px;
   position: absolute;
   width: 100%;
   justify-content: space-between;
@@ -24,21 +28,23 @@
 
 .add-item,
 .go-back {
-  color: white;
   background: none;
   border: none;
 }
 
 .add-item {
-  font-size: 12vw;
+  font-size: 40px;
   cursor: pointer;
-  padding-right: 10px;
+  padding-right: 20px;
+  color: orange;
 }
 
 .go-back {
-  font-size: 4vw;
+  color: white;
+  font-size: 20px;
   cursor: pointer;
   padding-left: 20px;
+  padding-top: 7px;
 }
 
 .go-back a {

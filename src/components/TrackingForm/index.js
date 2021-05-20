@@ -11,8 +11,8 @@ class TrackingForm extends React.Component {
       date: '',
       distance: 1,
       duration: 60,
-      pulse: 80,
-      calories: 150,
+      pulse: '',
+      calories: '',
       selectedOption: '🙂',
     };
   }
@@ -70,7 +70,7 @@ class TrackingForm extends React.Component {
 
   handleEdit = async (id, activityId) => {
     const {
-      date, duration, selectedOption, distance, pulse, calories,
+      date, distance, duration, pulse, calories, selectedOption,
     } = this.state;
     const {
       user, updateItem, changeEditForm,
@@ -91,10 +91,10 @@ class TrackingForm extends React.Component {
     changeEditForm();
   }
 
-  handleSubmit(date, duration, distance, pulse, calories, rate) {
+  handleSubmit(date, distance, duration, pulse, calories, rate) {
     const { addTracking, changeAddForm, user } = this.props;
     const userId = user.user.id;
-    addTracking(date, duration, distance, pulse, calories, rate, userId);
+    addTracking(date, distance, duration, pulse, calories, rate, userId);
     changeAddForm();
   }
 
@@ -114,7 +114,7 @@ class TrackingForm extends React.Component {
           {' '}
           Tracking for this Activity/TForm
         </h4>
-        <form className="item">
+        <form className="item" onSubmit={() => this.handleSubmit(date, distance, duration, pulse, calories, selectedOption)}>
 
           <div className="form-div">
             <div className="item-detail date-div">
@@ -129,18 +129,6 @@ class TrackingForm extends React.Component {
                 />
               </label>
             </div>
-            <div className="item-detail duration-div">
-              <label htmlFor="duration">
-                Duration (min):
-                <input
-                  id="duration"
-                  type="number"
-                  name="duration"
-                  defaultValue={buttonId === '0' ? duration : track[0].duration}
-                  onChange={this.handleChangeDuration}
-                />
-              </label>
-            </div>
 
             <div className="item-detail distance-div">
               <label htmlFor="distance">
@@ -151,6 +139,18 @@ class TrackingForm extends React.Component {
                   name="distance"
                   defaultValue={buttonId === '0' ? distance : track[0].distance}
                   onChange={this.handleChangeDistance}
+                />
+              </label>
+            </div>
+            <div className="item-detail duration-div">
+              <label htmlFor="duration">
+                Duration (min):
+                <input
+                  id="duration"
+                  type="number"
+                  name="duration"
+                  defaultValue={buttonId === '0' ? duration : track[0].duration}
+                  onChange={this.handleChangeDuration}
                 />
               </label>
             </div>
@@ -189,7 +189,6 @@ class TrackingForm extends React.Component {
               <input type="radio" id="option4" name="rate" value="😩" checked={selectedOption === '😩'} onChange={this.handleOptionChange} />
               <span role="img" aria-label="rate_3">😩</span>
             </div>
-
             <div className="buttons-form item-buttons">
               {actionToPerform === 'Add' && <button type="button" onClick={() => this.handleSubmit(selectedOption, distance, date, duration, pulse, calories)}>{actionToPerform}</button>}
               {actionToPerform === 'Save Changes' && <button type="button" onClick={() => this.handleEdit(track[0].id, track[0].activityId)}>Save</button>}

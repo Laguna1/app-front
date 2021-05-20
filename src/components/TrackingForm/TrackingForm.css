@@ -7,8 +7,10 @@
 .item {
   font-family: 'Open Sans', sans-serif;
   border: 3px solid orange;
-  width: 50vw;
-  margin: 1% 25%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 15px 12px;
+  flex-direction: column;
   padding: 10px;
   border-radius: 11px;
   font-size: 3vw;
@@ -30,7 +32,7 @@ input::-webkit-inner-spin-button {
   border: 1px none;
   font-size: 4vw;
   font-family: 'Open Sans', sans-serif;
-  width: 10vw;
+  width: 6vw;
 }
 
 .item-detail input {
@@ -38,6 +40,12 @@ input::-webkit-inner-spin-button {
   margin-left: 1em;
   margin-bottom: 6px;
   height: 1.5em;
+}
+
+.date-div,
+.item-detail {
+  display: flex;
+  justify-content: center;
 }
 
 #date {
@@ -72,8 +80,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+.item-buttons {
+  justify-content: center;
+}
+
 .buttons-form {
-  margin-left: 8%;
+  display: flex;
+  align-items: center;
+  margin-top: 9px;
+  margin-bottom: 8px;
 }
 
 #option1,

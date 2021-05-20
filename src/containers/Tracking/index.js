@@ -8,7 +8,7 @@ import { loginStatus } from '../../actions/user';
 import TrackingForm from '../../components/TrackingForm';
 import './Tracking.css';
 
-class Trackings extends React.Component {
+class Tracking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,7 +112,7 @@ class Trackings extends React.Component {
               <i className="fa fa-arrow-left" aria-hidden="true" />
             </Link>
           </button>
-          {/* <button type="button" className="add-item" onClick={this.displayInfo}>+</button> */}
+          <button type="button" className="add-item" onClick={this.displayInfo}>+</button>
         </div>
         {!addEdit && !addForm && (
         <h4>
@@ -208,7 +208,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateItem: (id, id2) => dispatch(deleteItem(id, id2)),
 });
 
-Trackings.propTypes = {
+Tracking.propTypes = {
   addForm: PropTypes.bool,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -237,7 +237,7 @@ Trackings.propTypes = {
 
 };
 
-Trackings.defaultProps = {
+Tracking.defaultProps = {
   addForm: false,
   fetchActivityItems: () => {},
   deleteItem: () => {},
@@ -248,4 +248,4 @@ Trackings.defaultProps = {
   location: {},
   history: {},
 };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Trackings));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Tracking));

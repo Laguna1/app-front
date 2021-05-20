@@ -64,6 +64,8 @@ export const deleteActivity = (data) => async (dispatch) => {
 
 export const updateActivity = (data) => async (dispatch) => {
   try {
+    // eslint-disable-next-line
+    console.log(data);
     dispatch({ type: UPDATE_ACTIVITY, payload: data });
     const response = await axios({
       method: 'PATCH',
@@ -72,6 +74,8 @@ export const updateActivity = (data) => async (dispatch) => {
       crossdomain: true,
       withCredentials: true,
     });
+    // eslint-disable-next-line
+    console.log(response);
     return response;
   } catch (error) {
     return (error);
