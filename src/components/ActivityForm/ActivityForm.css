@@ -11,7 +11,7 @@
   font-size: 4.4vw;
   border: 1px solid rgb(65, 181, 232);
   background-color: white;
-  margin: 2% 15%;
+  margin: 0 15px 12px;
   border-radius: 11px;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,7 @@
 
 .one-parameter input {
   border: 1px solid rgb(65, 181, 232);
-  width: 33vw;
+  width: 50vw;
   height: 5vh;
   border-radius: 5px;
   margin-right: 10px;

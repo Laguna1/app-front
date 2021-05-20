@@ -15,7 +15,7 @@ exports[`Footer renders correctly 1`] = `
         className="fa fas fa-walking"
       />
       <p>
-        
+        Activities
       </p>
     </div>
   </a>
@@ -27,10 +27,10 @@ exports[`Footer renders correctly 1`] = `
       className="icons"
     >
       <i
-        className="fa fas fa-sign-in"
+        className="fa fa-sign-in"
       />
       <p>
-        
+        Sign In
       </p>
     </div>
   </a>
@@ -45,7 +45,7 @@ exports[`Footer renders correctly 1`] = `
         className="fa fas fa-user-plus"
       />
       <p>
-        
+        Sign Up
       </p>
     </div>
   </a>

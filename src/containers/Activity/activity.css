@@ -9,23 +9,20 @@
 h3 {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  font-size: 3.5vw;
+  font-size: 5.5vw;
   color: rgb(65, 181, 232);
   padding-left: 1rem;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 20px;
 }
 
 .add-activity {
-  font-size: 2.5em;
+  font-size: 20px;
   position: absolute;
-  right: 6%;
-  top: 13%;
+  right: 0;
   background: none;
   border: 5px solid rgb(173, 220, 145);
   cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px;
   color: rgb(173, 220, 145);
 }
 
@@ -38,11 +35,10 @@ h3 {
   justify-content: space-between;
   border: 2px solid rgb(65, 181, 232);
   background-color: white;
-  margin: 20px 20%;
+  margin: 0 15px 12px;
   border-radius: 11px;
   flex-direction: row-reverse;
   align-items: center;
-  width: 60%;
 }
 
 .simple-act .buttons {

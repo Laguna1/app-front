@@ -5,9 +5,9 @@ exports[`Header renders correctly 1`] = `
   <div
     className="header"
   >
-    <h2>
+    <h3>
       Tracking App
-    </h2>
+    </h3>
   </div>
 </header>
 `;

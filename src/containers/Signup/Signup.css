@@ -4,31 +4,25 @@
   margin: 0 auto;
 }
 
-.signup h2,
-p {
+.signup h2 {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  font-size: 2.5em;
   color: rgb(65, 181, 232);
-  margin-top: 100px;
-}
-
-p {
-  font-size: 1em;
 }
 
 .signup form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .signup form input {
   margin: 10px 0;
-  height: 50px;
-  width: 400px;
-  font-size: 1em;
-  border: 3px solid rgb(65, 181, 232);
+  height: 28px;
+  width: 195px;
+  border: 2px solid rgb(65, 181, 232);
+  border-radius: 5px;
 }
 
 .signup form input::placeholder {
@@ -38,13 +32,12 @@ p {
 .signup form button {
   border: none;
   background-color: rgb(65, 181, 232);
-  height: 60px;
+  height: 40px;
   padding: 0 20px;
-  margin-top: 2.5em;
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  font-size: 1.5em;
-  width: 410px;
+  width: 110px;
   cursor: pointer;
+  margin: 20px 0;
 }

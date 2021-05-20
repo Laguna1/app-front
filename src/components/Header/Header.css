@@ -5,15 +5,15 @@ header {
   display: flex;
   background: rgb(65, 181, 232);
   font-family: 'Open Sans', sans-serif;
-  color: white;
   align-items: center;
   justify-content: center;
   max-height: 10%;
 }
 
-.header {
+.header h3 {
   text-align: center;
+  color: white;
   letter-spacing: 0.6px;
-  font-size: 2vw;
-  margin-top: 1%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.5vw;
 }

@@ -66,7 +66,6 @@ class Signup extends Component {
            {errors ? this.handleErrors() : null}
          </div>
          <h2>Sign Up</h2>
-         <p>Welcome! Sign Up and start managing yor activities</p>
          <form onSubmit={this.handleSubmit}>
            <input
              placeholder="Username"

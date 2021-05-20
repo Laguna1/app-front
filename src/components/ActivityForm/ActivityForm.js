@@ -17,11 +17,11 @@ class ActivityForm extends React.Component {
   componentDidMount = () => {
     const { actionToPerform, buttonId, activities } = this.props;
     if (actionToPerform === 'Save Changes') {
-      const activity = activities.filter((x) => x.id.toString() === buttonId);
+      const activitity = activities.filter((x) => x.id.toString() === buttonId);
       this.setState({
-        name: activity[0].name,
-        place: activity[0].place,
-        intensity: activity[0].intensity,
+        name: activitity[0].name,
+        place: activitity[0].place,
+        intensity: activitity[0].intensity,
       });
     }
   }
@@ -73,7 +73,7 @@ class ActivityForm extends React.Component {
     const {
       actionToPerform, activities, buttonId, changeEditForm, changeAddForm,
     } = this.props;
-    const act = activities.filter((x) => x.id.toString() === buttonId);
+    const activity = activities.filter((x) => x.id.toString() === buttonId);
     return (
       <div>
         <h3>
@@ -86,7 +86,7 @@ class ActivityForm extends React.Component {
           onSubmit={
            actionToPerform === 'Add'
              // eslint-disable-next-line max-len
-             ? () => this.handleSubmit(name, place, intensity) : () => this.handleUpdate(act[0].id)
+             ? () => this.handleSubmit(name, place, intensity) : () => this.handleUpdate(activity[0].id)
 }
         >
           <div className="one-parameter">
@@ -95,8 +95,9 @@ class ActivityForm extends React.Component {
               <input
                 required
                 id="name"
+                type="text"
                 name="name"
-                defaultValue={buttonId === '0' ? name : act[0].name}
+                defaultValue={buttonId === '0' ? name : activity[0].name}
                 onChange={this.handleChangeName}
               />
             </label>
@@ -107,7 +108,7 @@ class ActivityForm extends React.Component {
               <input
                 id="place"
                 name="place"
-                defaultValue={buttonId === '0' ? place : act[0].place}
+                defaultValue={buttonId === '0' ? place : activity[0].place}
                 onChange={this.handleChangePlace}
               />
             </label>
@@ -119,7 +120,7 @@ class ActivityForm extends React.Component {
               <input
                 id="intensity"
                 name="intensity"
-                defaultValue={buttonId === '0' ? intensity : act[0].intensity}
+                defaultValue={buttonId === '0' ? intensity : activity[0].intensity}
                 onChange={this.handleChangeIntensity}
               />
             </label>
@@ -166,7 +167,7 @@ ActivityForm.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  activity: state.activity,
+  activities: state.activitity,
 });
 const mapDispatchToProps = (dispatch) => ({
   updateActivity: (data) => dispatch(updateActivity(data)),
