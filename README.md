@@ -6,15 +6,15 @@ This project is an external part of the "Tracking App" application, and for the 
 The server side for this application is available [here: 'api-back'](https://final-api-backend.herokuapp.com/)
 
 - User can to sign up
-![Screen](./src/assets/img/1image.png)
+![Screen](./src/assets/img/1img.png)
 -User can to sign in in existant account
-![Screen](./src/assets/img/2image.png)
+![Screen](./src/assets/img/2img.png)
 - User can create new activity, then update or delete it
-![Screen](./src/assets/img/3image.png)
-- User can view a list of their activities
-![Screen](./src/assets/img/4image.png)
-- User can create new activity, then update or delete it
-![Screen](./src/assets/img/5image.png)
+![Screen](./src/assets/img/4img.png)
+- User can view a list of his activities
+![Screen](./src/assets/img/3img.png)
+- User can create new tracking for each activity, then update or delete it
+![Screen](./src/assets/img/5img.png)
 
 ### [Live Demo](https://app-front.netlify.app)
 
