@@ -13,7 +13,7 @@ class TrackingForm extends React.Component {
       duration: 60,
       pulse: '',
       calories: '',
-      selectedOption: '🙂',
+      rate: '',
     };
   }
 
@@ -27,7 +27,7 @@ class TrackingForm extends React.Component {
         duration: track[0].duration,
         pulse: track[0].pulse,
         calories: track[0].calories,
-        selectedOption: track[0].rate,
+        rate: track[0].rate,
       });
     }
   }
@@ -62,15 +62,15 @@ class TrackingForm extends React.Component {
     });
   }
 
-  handleOptionChange= (e) => {
+  handleChangeRate= (e) => {
     this.setState({
-      selectedOption: e.target.value,
+      rate: e.target.value,
     });
   }
 
   handleEdit = async (id, activityId) => {
     const {
-      date, distance, duration, pulse, calories, selectedOption,
+      date, distance, duration, pulse, calories, rate,
     } = this.state;
     const {
       user, updateItem, changeEditForm,
@@ -84,7 +84,7 @@ class TrackingForm extends React.Component {
       duration,
       pulse,
       calories,
-      rate: selectedOption,
+      rate,
     };
 
     await updateItem(data);
@@ -100,7 +100,7 @@ class TrackingForm extends React.Component {
 
   render() {
     const {
-      date, distance, duration, pulse, calories, selectedOption,
+      date, distance, duration, pulse, calories, rate,
     } = this.state;
     const {
       actionToPerform, trackings, buttonId, changeAddForm, changeEditForm,
@@ -114,7 +114,7 @@ class TrackingForm extends React.Component {
           {' '}
           Tracking for this Activity/TForm
         </h4>
-        <form className="item" onSubmit={() => this.handleSubmit(date, distance, duration, pulse, calories, selectedOption)}>
+        <form className="item" onSubmit={() => this.handleSubmit(date, distance, duration, pulse, calories, rate)}>
 
           <div className="form-div">
             <div className="item-detail date-div">
@@ -178,19 +178,20 @@ class TrackingForm extends React.Component {
                 />
               </label>
             </div>
-            <div className="rate-div">
-              <span className="rate">Rate: </span>
-              <input type="radio" id="option1" name="rate" value="🙂" checked={selectedOption === '🙂'} onChange={this.handleOptionChange} />
-              <span role="img" aria-label="rate_0">🙂</span>
-              <input type="radio" id="option2" name="rate" value="😐" checked={selectedOption === '😐'} onChange={this.handleOptionChange} />
-              <span role="img" aria-label="rate_1">😐</span>
-              <input type="radio" id="option3" name="rate" value="🙁" checked={selectedOption === '🙁'} onChange={this.handleOptionChange} />
-              <span role="img" aria-label="rate_2">🙁</span>
-              <input type="radio" id="option4" name="rate" value="😩" checked={selectedOption === '😩'} onChange={this.handleOptionChange} />
-              <span role="img" aria-label="rate_3">😩</span>
+            <div className="item-detail rate-div">
+              <label htmlFor="rate">
+                Rate :
+                <input
+                  id="rate"
+                  type="text"
+                  name="rate"
+                  defaultValue={buttonId === '0' ? '' : track[0].rate[0]}
+                  onChange={this.handleChangeRate}
+                />
+              </label>
             </div>
             <div className="buttons-form item-buttons">
-              {actionToPerform === 'Add' && <button type="button" onClick={() => this.handleSubmit(selectedOption, distance, date, duration, pulse, calories)}>{actionToPerform}</button>}
+              {actionToPerform === 'Add' && <button type="button" onClick={() => this.handleSubmit(rate, distance, date, duration, pulse, calories)}>{actionToPerform}</button>}
               {actionToPerform === 'Save Changes' && <button type="button" onClick={() => this.handleEdit(track[0].id, track[0].activityId)}>Save</button>}
               {actionToPerform === 'Add' && <button type="button" onClick={changeAddForm}>Cancel</button>}
               {actionToPerform === 'Save Changes' && <button type="button" onClick={changeEditForm}>Cancel</button>}
