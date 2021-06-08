@@ -81,6 +81,7 @@ class ActivityForm extends React.Component {
           {' '}
           Activity
         </h3>
+
         <form
           className="one-form"
           onSubmit={

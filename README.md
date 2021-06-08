@@ -75,5 +75,3 @@ You can access all the design info - color, typography, layouts - at this link:
 
 ### 📝 License
 This project is [MIT](https://github.com/Laguna1/api-front/LICENSE) licensed.
-
-

@@ -12,7 +12,7 @@ export const loginStatus = () => (dispatch) => {
   axios.get('https://final-api-backend.herokuapp.com/logged_in',
     { withCredentials: true })
     .then((response) => (
-      response.data))
+      [response.data]))
     .then((data) => {
       dispatch({
         type: LOGGED_IN,

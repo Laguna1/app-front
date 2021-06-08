@@ -7,7 +7,7 @@ export const CREATE_ITEM_ERROR = 'CREATE ITEM ERROR';
 export const UPDATE_ITEM = 'UPDATE ITEM';
 
 export const fetchActivityItems = (userId, activityId) => (dispatch) => axios.get(`https://final-api-backend.herokuapp.com/users/${userId}/activities/${activityId}/trackings`)
-  .then((response) => response.data)
+  .then((response) => [response.data])
   .then((data) => {
     dispatch({
       type: DISPLAY_FETCHED_ITEMS,
@@ -61,7 +61,7 @@ export const updateItem = (data) => async (dispatch) => {
     dispatch({ type: UPDATE_ITEM, payload: data });
     const response = await axios({
       method: 'PATCH',
-      url: `https://final-api-backend.herokuapp.com/users/${data.userId}/activities/${data.activityId}/trackings/${data.id}`,
+      url: `http://localhost:3000/users/${data.userId}/activities/${data.activityId}/trackings/${data.id}`,
       data,
       crossdomain: true,
       withCredentials: true,

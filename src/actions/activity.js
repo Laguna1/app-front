@@ -7,7 +7,7 @@ export const CREATE_ACTIVITY_ERROR = 'CREATE ACTIVITY ERROR';
 export const UPDATE_ACTIVITY = 'UPDATE ACTIVITY';
 
 export const fetchUserActivity = (id) => (dispatch) => axios.get(`https://final-api-backend.herokuapp.com/users/${id}/activities`)
-  .then((response) => response.data)
+  .then((response) => [response.data])
   .then((data) => {
     dispatch({
       type: DISPLAY_FETCHED_ACTIVITY,
@@ -69,7 +69,7 @@ export const updateActivity = (data) => async (dispatch) => {
     dispatch({ type: UPDATE_ACTIVITY, payload: data });
     const response = await axios({
       method: 'PATCH',
-      url: `https://final-api-backend.herokuapp.com/users/${data.userId}/activities/${data.id}`,
+      url: `https://final-api-backend.herokuapp.com/users/users/${data.userId}/activities/${data.id}`,
       data,
       crossdomain: true,
       withCredentials: true,

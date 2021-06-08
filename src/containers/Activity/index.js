@@ -96,23 +96,23 @@ class Activity extends React.Component {
            { !editForm && !addForm && <h3>Your activities</h3>}
 
            {activity.length === 0 && !addForm && <div className="tracking">Add activities you want to track here!</div>}
-           {activity.map((activ) => (
-             <div key={activ.id}>
+           {activity.map((activity) => (
+             <div key={activity.id}>
                { !editForm && !addForm && (
                <div className="simple-act">
                  <div className="buttons">
                    <button type="button" onClick={this.displayEdit}>
-                     <i className="fa fa-pencil-square-o" id={activ.id} />
+                     <i className="fa fa-pencil-square-o" id={activity.id} />
                    </button>
-                   <button type="button" onClick={() => this.deleteActivity(activ.id)}>
+                   <button type="button" onClick={() => this.deleteActivity(activity.id)}>
                      <i className="fa fa-trash-o" />
                    </button>
                  </div>
                  <div className="activity-info">
                    <Link to={{
-                     pathname: `activity/${activ.id}`,
+                     pathname: `activity/${activity.id}`,
                      state: {
-                       nameactiv: activ.name,
+                       nameactivity: activity.name,
                      },
                    }}
                    >
@@ -124,9 +124,9 @@ class Activity extends React.Component {
                          <p>Intensity:</p>
                        </div>
                        <div className="act-info">
-                         <p>{activ.name}</p>
-                         <p>{activ.place}</p>
-                         <p>{activ.intensity}</p>
+                         <p>{activity.name}</p>
+                         <p>{activity.place}</p>
+                         <p>{activity.intensity}</p>
                        </div>
                      </div>
                      )}
@@ -134,7 +134,7 @@ class Activity extends React.Component {
                  </div>
                </div>
                )}
-               { editForm && activ.id.toString() === idActivity && <ActivityForm actionToPerform="Save Changes" buttonId={idActivity} changeEditForm={this.changeEditForm} />}
+               { editForm && activity.id.toString() === idActivity && <ActivityForm actionToPerform="Save Changes" buttonId={idActivity} changeEditForm={this.changeEditForm} />}
              </div>
            ))}
          </div>
