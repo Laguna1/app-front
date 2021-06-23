@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { baseUrl } from './baseUrl';
+
 export const CREATE_USER = 'CREATE USER';
 export const CREATE_USER_ERROR = 'CREATE USER ERROR';
 export const LOGIN_USER = 'LOGIN USER';
@@ -9,7 +11,7 @@ export const LOGGED_IN = 'LOGGED IN';
 export const LOGGED_IN_ERROR = 'LOGGED_IN_ERROR';
 
 export const loginStatus = () => (dispatch) => {
-  axios.get('https://final-api-backend.herokuapp.com/logged_in',
+  axios.get(`${baseUrl}/logged_in`,
     { withCredentials: true })
     .then((response) => (
       [response.data]))
@@ -32,7 +34,7 @@ export const createUser = (newUser) => async (dispatch) => {
   try {
     response = await axios({
       method: 'POST',
-      url: 'https://final-api-backend.herokuapp.com/users',
+      url: `${baseUrl}/users`,
       data: { user: newUser },
       crossdomain: true,
       withCredentials: true,
@@ -60,7 +62,7 @@ export const createUser = (newUser) => async (dispatch) => {
 export const loginUser = (user) => async (dispatch) => {
   let response = {};
   try {
-    response = await axios.post('https://final-api-backend.herokuapp.com/login', { user }, { withCredentials: true });
+    response = await axios.post(`${baseUrl}/login`, { user }, { withCredentials: true });
     dispatch({
       type: LOGIN_USER,
       payload: response.data,
@@ -80,7 +82,7 @@ export const logOutUser = () => async (dispatch) => {
     dispatch({ type: LOGOUT_USER, payload: {} });
     const response = await axios({
       method: 'DELETE',
-      url: 'https://final-api-backend.herokuapp.com/logout',
+      url: `${baseUrl}/logout`,
       data: { user: {} },
       crossdomain: true,
       withCredentials: true,
