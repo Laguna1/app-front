@@ -1,117 +1,97 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
-import './Signup.css';
-import { createUser } from '../../actions/user';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-class Signup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      errors: '',
-    };
-  }
+import FormInput from '../../components/formInput';
+import SubmitButton from '../../components/submitButton';
 
-  handleChangeName = (e) => {
-    this.setState({
-      username: e.target.value,
-    });
-  }
+const SignUp = ({ history }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  handleChangePassword = (e) => {
-    this.setState({
-      password: e.target.value,
-    });
-  }
-
-  handleSubmit= async (e) => {
-    e.preventDefault();
-    const {
-      username, password,
-    } = this.state;
-    const { createUser } = this.props;
-
-    const response = await createUser({ username, password });
-    if (response && response.status === 200) {
-      const { history } = this.props;
-      history.push('/main');
-    } else {
-      const { error } = this.props;
-      this.setState({
-        errors: error,
-      });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password === confirmPassword) {
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/sign_up',
+        data: {
+          data: {
+            attributes: {
+              username,
+              password,
+            },
+          },
+        },
+      })
+        .then(() => {
+          history.push('/signin');
+        })
+        .catch((err) => {
+          // eslint-disable-next-line
+              console.log(err);
+        });
     }
-  }
+  };
 
-   handleErrors = () => {
-     const { errors } = this.state;
-     //  setTimeout(() => this.setState({ errors: '' }), 3000);
-     return (
-       <ul>
-         {errors.map((error) => <li key={error}>{error}</li>)}
-       </ul>
-     );
-   }
+  const handleUsernameChange = (event) => {
+    const { value } = event.target;
+    setUsername(value);
+  };
 
-   render() {
-     const {
-       username, errors, password,
-     } = this.state;
-     return (
-       <section className="signup">
-         <div className="errors-div">
-           {errors ? this.handleErrors() : null}
-         </div>
-         <h2>Sign Up</h2>
-         <form onSubmit={this.handleSubmit}>
-           <input
-             placeholder="Username"
-             type="text"
-             name="username"
-             value={username}
-             onChange={this.handleChangeName}
-             required
-           />
-           <input
-             placeholder="Password"
-             type="password"
-             name="password"
-             value={password}
-             onChange={this.handleChangePassword}
-             required
-           />
-           <button placeholder="submit" type="submit">
-             Sign Up
-           </button>
-         </form>
-       </section>
-     );
-   }
-}
+  const handlePasswordChange = (event) => {
+    const { value } = event.target;
+    setPassword(value);
+  };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-  isLogin: state.user.isLogin,
-  error: state.user.error,
-});
-const mapDispatchToProps = (dispatch) => ({
-  createUser: (data) => dispatch(createUser(data)),
-});
+  const handleConfirmPassword = (event) => {
+    const { value } = event.target;
+    setConfirmPassword(value);
+  };
 
-Signup.propTypes = {
+  return (
+    <div className="sign-in">
+      <h2>Create an account</h2>
+      <span>Sign up with your username and password</span>
+
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          name="username"
+          type="username"
+          handleChange={handleUsernameChange}
+          value={username}
+          placeholder="username"
+        />
+        <FormInput
+          name="password"
+          type="password"
+          value={password}
+          handleChange={handlePasswordChange}
+          placeholder="password"
+        />
+
+        <FormInput
+          name="confirmPassword"
+          type="password"
+          handleChange={handleConfirmPassword}
+          value={confirmPassword}
+          placeholder="confirm password"
+        />
+
+        <div>
+          <SubmitButton> Sign up </SubmitButton>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+SignUp.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
-  }),
-  createUser: PropTypes.func.isRequired,
-  error: PropTypes.instanceOf(Array),
-
+  }).isRequired,
 };
 
-Signup.defaultProps = {
-  error: [],
-  history: {},
-};
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
+export default withRouter(SignUp);

@@ -1,137 +1,91 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import './Login.css';
-import { loginUser } from '../../actions/user';
+import axios from 'axios';
+import { sessionService } from 'redux-react-session';
+import { withRouter } from 'react-router-dom';
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      errors: [],
-    };
-  }
+import FormInput from '../../components/formInput';
+import SubmitButton from '../../components/submitButton';
 
-  componentDidUpdate(prevProps) {
-    const { user, isLogin } = this.props;
-    if (user !== prevProps.user && isLogin) {
-      const { history } = this.props;
-      history.push('/main');
-    }
-  }
+const SignIn = ({ history }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  handleChangeName = (e) => {
-    this.setState({
-      username: e.target.value,
-    });
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  handleChangePassword = (e) => {
-    this.setState({
-      password: e.target.value,
-    });
-  }
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/login',
+      data: {
+        data: {
+          attributes: {
+            username,
+            password,
+          },
+        },
+      },
+    })
+      .then(({ data: res }) => {
+        const { data: { attributes: { id } } } = res;
+        const { data: { attributes: { token } } } = res;
 
-  handleSubmit= async (e) => {
-    e.preventDefault();
-    const { username, password } = this.state;
-    const { loginUser } = this.props;
-    const response = await loginUser({ username, password });
-    const { error } = this.props;
-
-    if (response.data.status === 403) {
-      this.setState({
-        errors: error,
+        sessionService.saveSession({ token })
+          .then(() => {
+            sessionService.saveUser({ id })
+              .then(() => {
+                history.push('/');
+              });
+          });
+      })
+      .catch((err) => {
+        // eslint-disable-next-line
+            console.log(err);
       });
-    }
-  }
+  };
 
-  handleErrors = () => {
-    const { errors } = this.state;
-    // setTimeout(() => this.setState({ errors: '' }), 3000);
-    if (errors.length > 0) {
-      return (
+  const handleUsernameChange = (event) => {
+    const { value } = event.target;
+    setUsername(value);
+  };
+
+  const handlePasswordChange = (event) => {
+    const { value } = event.target;
+    setPassword(value);
+  };
+
+  return (
+    <div className="sign-in">
+      <h2>I already have an account</h2>
+      <span>Sign in with your name and password</span>
+
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          name="username"
+          type="username"
+          handleChange={handleUsernameChange}
+          value={username}
+          placeholder="username"
+        />
+        <FormInput
+          name="password"
+          type="password"
+          value={password}
+          handleChange={handlePasswordChange}
+          placeholder="password"
+        />
         <div>
-          <ul>
-            {errors.map((error) => <li key={error}>{error}</li>)}
-          </ul>
+          <SubmitButton> Sign in </SubmitButton>
         </div>
-      );
-    }
-    return null;
-  }
+      </form>
+    </div>
+  );
+};
 
-  render() {
-    const { username, password, errors } = this.state;
-    return (
-      <section className="login">
-        <div>
-          <ul id="errors-div" className="errors-div">
-            {errors ? this.handleErrors() : null}
-          </ul>
-        </div>
-        <h2>Sign In</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Username"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChangeName}
-          />
-          <input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChangePassword}
-          />
-          <button className="btn-login" placeholder="submit" type="submit">
-            Sign In
-          </button>
-
-          <button type="button" className="btn-signup">
-            <Link to="/signup">New Account</Link>
-          </button>
-
-        </form>
-
-      </section>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-  isLogin: state.user.isLogin,
-  error: state.user.errors,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loginUser: (data) => dispatch(loginUser(data)),
-});
-
-Login.propTypes = {
+SignIn.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
-  }),
-  loginUser: PropTypes.func,
-  user: PropTypes.shape({}),
-  isLogin: PropTypes.bool,
-  error: PropTypes.instanceOf(Array),
-
+  }).isRequired,
 };
 
-Login.defaultProps = {
-  history: {},
-  loginUser: () => {},
-  user: {},
-  isLogin: false,
-  error: [],
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(SignIn);
