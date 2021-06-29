@@ -6,4 +6,5 @@ const rootReducer = combineReducers({
   track: trackReducer,
   session: sessionReducer,
 });
+
 export default rootReducer;
