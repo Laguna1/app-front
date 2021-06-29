@@ -1,64 +1,34 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import { sessionService } from 'redux-react-session';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import FormInput from '../../components/formInput';
 import SubmitButton from '../../components/submitButton';
+import { login } from '../../reducers/session/session.actions';
 
-const SignIn = ({ history }) => {
+const SignIn = ({ history, login }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/login',
-      data: {
-        data: {
-          attributes: {
-            username,
-            password,
-          },
-        },
-      },
-    })
-      .then(({ data: res }) => {
-        const { data: { attributes: { id } } } = res;
-        const { data: { attributes: { token } } } = res;
-
-        sessionService.saveSession({ token })
-          .then(() => {
-            sessionService.saveUser({ id })
-              .then(() => {
-                history.push('/');
-              });
-          });
-      })
-      .catch((err) => {
-        // eslint-disable-next-line
-            console.log(err);
-      });
+    login(username, password, history);
   };
 
   const handleUsernameChange = (event) => {
     const { value } = event.target;
     setUsername(value);
   };
-
   const handlePasswordChange = (event) => {
     const { value } = event.target;
     setPassword(value);
   };
-
   return (
     <div className="sign-in">
       <h2>I already have an account</h2>
       <span>Sign in with your name and password</span>
-
       <form onSubmit={handleSubmit}>
         <FormInput
           name="username"
@@ -81,11 +51,19 @@ const SignIn = ({ history }) => {
     </div>
   );
 };
-
 SignIn.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  login: PropTypes.func.isRequired,
+
 };
 
-export default withRouter(SignIn);
+const mapDispatchToProps = (dispatch) => ({
+  login: (username, password, history) => dispatch(login(username, password, history)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(withRouter(SignIn));
