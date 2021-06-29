@@ -8184,7 +8184,7 @@
   "resolved" "https://registry.npmjs.org/node-releases/-/node-releases-1.1.70.tgz"
   "version" "1.1.70"
 
-"node-sass@^4.0.0 || ^5.0.0", "node-sass@^6.0.0":
+"node-sass@^4.0.0 || ^5.0.0":
   "integrity" "sha512-GDzDmNgWNc9GNzTcSLTi6DU6mzSPupVJoStIi7cF3GjwSE9q1cVakbvAAVSt59vzUjV9JJoSZFKoo9krbjKd2g=="
   "resolved" "https://registry.npmjs.org/node-sass/-/node-sass-6.0.0.tgz"
   "version" "6.0.0"

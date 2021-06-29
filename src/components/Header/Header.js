@@ -6,7 +6,7 @@ import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { selectAuthenticated } from '../reducers/session/session.selectors';
+import { selectAuthenticated } from '../../reducers/session/session.selectors';
 
 const Header = ({ authenticated }) => {
   const logout = () => {

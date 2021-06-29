@@ -1,93 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import FormActiv from '../../components/formActiv';
+import TracksList from '../../components/tracks';
 
 const Activ = ({ match: { params: { activId } }, history }) => {
-  const [name, setName] = useState('');
-  const [distance, setDistance] = useState('');
-  const [duration, setDuration] = useState(0);
-  const [repeat, setRepeat] = useState(0);
+  const [tracks, setTracks] = useState([]);
+  const [refresh, setRefresh] = useState(1 + Math.random() * (100 - 1));
 
-  const setDeafault = () => {
-    setName('');
-    setDistance('');
-    setDuration(0);
-    setRepeat(0);
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    let mounted = true;
 
     sessionService.loadSession()
       .then(({ token }) => {
         axios({
-          method: 'post',
+          method: 'get',
           url: `http://localhost:3000/activs/${activId}/tracks`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          data: {
-            data: {
-              attributes: {
-                name,
-                distance,
-                duration,
-                repeat,
-              },
-            },
-          },
         })
-          .then(() => {
-            setDeafault();
+          .then(({ data: { data } }) => {
+            if (mounted) {
+              setTracks(data);
+            }
           })
           .catch(() => {
-            history.push('/not-found');
+            if (mounted) {
+              history.push('/not-found');
+            }
           });
       })
       .catch(() => {
-        history.push('/signin');
+        if (mounted) {
+          history.push('/login');
+        }
       });
-  };
+
+    // eslint-disable-next-line no-return-assign
+    return () => mounted = false;
+  }, [refresh]);
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input
-          name="name"
-          type="text"
-          onChange={({ target: { value } }) => setName(value)}
-          value={name}
-          placeholder="Name"
-          required
-        />
-        <input
-          name="distance"
-          type="number"
-          onChange={({ target: { value } }) => setDistance(value)}
-          value={distance}
-          placeholder="Distance"
-          required
-        />
-        <input
-          name="duration"
-          type="number"
-          onChange={({ target: { value } }) => setDuration(value)}
-          value={duration}
-          required
-        />
-        <input
-          name="repeat"
-          type="number"
-          onChange={({ target: { value } }) => setRepeat(value)}
-          value={repeat}
-          required
-        />
-        <input
-          type="submit"
-        />
-      </form>
+      <FormActiv setRefresh={setRefresh} />
+      <TracksList tracks={tracks} />
     </div>
   );
 };
