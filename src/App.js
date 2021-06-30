@@ -8,6 +8,7 @@ import HomePage from './containers/homePage';
 import SignIn from './containers/Login';
 import SignUp from './containers/Signup';
 import NotFound from './containers/NotFound/notFound';
+import Title from './components/Title/Title';
 import Header from './components/Header/Header';
 import ActivItem from './containers/Activ/ActivItem';
 import Activ from './containers/Activ/activ';
@@ -17,6 +18,7 @@ import { selectChecked, selectAuthenticated } from './reducers/session/session.s
 
 const App = ({ authenticated, checked }) => (
   <div className="app">
+    <Title />
     <Header />
     { checked
           && (

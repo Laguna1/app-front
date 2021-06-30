@@ -3,17 +3,8 @@
 header {
   flex-shrink: 0;
   display: flex;
-  background: rgb(65, 181, 232);
+  flex-direction: column;
   font-family: 'Open Sans', sans-serif;
   align-items: center;
   justify-content: center;
-  max-height: 10%;
-}
-
-.header h3 {
-  text-align: center;
-  color: white;
-  letter-spacing: 0.6px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 3.5vw;
 }

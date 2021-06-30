@@ -5,19 +5,21 @@ import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { selectAuthenticated, selectUser } from '../../reducers/session/session.selectors';
 import { logout } from '../../reducers/session/session.actions';
+import './Header.css';
 
 const Header = ({
   authenticated, logout, history, user: { username },
 }) => (
-  <header className="header">
-    <div>
+  <header className="">
+    <h3 className="">
       <Link to="/">
-        TRACK.IT
+        Tracks
       </Link>
-
+    </h3>
+    <div>
       <nav>
         <Link to="/activitem">
-          Create track for your new activity
+          Add activity
         </Link>
       </nav>
     </div>
@@ -34,13 +36,13 @@ const Header = ({
               role="button"
               tabIndex={0}
             >
-              LOG OUT
+              Log out
             </div>
           </div>
         </div>
       ) : (
         <Link to="/signup">
-          SIGN UP
+          Sign up
         </Link>
       )}
     </div>
