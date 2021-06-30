@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import FormInput from '../../components/formInput';
 import SubmitButton from '../../components/submitButton';
 import { login } from '../../reducers/session/session.actions';
@@ -13,7 +12,6 @@ const SignIn = ({ history, login }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     login(username, password, history);
   };
 
@@ -21,14 +19,17 @@ const SignIn = ({ history, login }) => {
     const { value } = event.target;
     setUsername(value);
   };
+
   const handlePasswordChange = (event) => {
     const { value } = event.target;
     setPassword(value);
   };
+
   return (
     <div className="sign-in">
-      <h2>I already have an account</h2>
-      <span>Sign in with your name and password</span>
+      <h2>I already have account</h2>
+      <span>Enter with your name and password</span>
+
       <form onSubmit={handleSubmit}>
         <FormInput
           name="username"
@@ -45,12 +46,13 @@ const SignIn = ({ history, login }) => {
           placeholder="password"
         />
         <div>
-          <SubmitButton> Sign in </SubmitButton>
+          <SubmitButton> Log in </SubmitButton>
         </div>
       </form>
     </div>
   );
 };
+
 SignIn.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,

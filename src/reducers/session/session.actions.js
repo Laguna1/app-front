@@ -55,3 +55,57 @@ export const logout = (history) => () => sessionService.loadSession()
     // eslint-disable-next-line
               console.log(err);
   });
+
+export const openActivItem = (item, history) => () => sessionService.loadSession()
+  .then(({ token }) => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/activs',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        data: {
+          attributes: {
+            item: item.toISOString().substring(0, 10),
+          },
+        },
+      },
+    })
+      .then(({ data: { data: { id } } }) => {
+        history.push(`/activ/${id}`);
+      })
+      .catch(() => {
+        axios({
+          method: 'get',
+          url: 'http://localhost:3000/activs',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          data: {
+            data: {
+              attributes: {
+                item: item.toISOString().substring(0, 10),
+              },
+            },
+          },
+        })
+          .then(({ data: { data: activs } }) => {
+            const activ = activs
+              .find((activ) => activ.attributes.item === item.toISOString()
+                .substring(0, 10));
+
+            if (activ) {
+              history.push(`/activ/${activ.id}`);
+            } else {
+              history.push('/not-found');
+            }
+          })
+          .catch(() => {
+            history.push('/not-found');
+          });
+      });
+  })
+  .catch(() => {
+    history.push('signin');
+  });

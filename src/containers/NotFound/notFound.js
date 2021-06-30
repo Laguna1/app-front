@@ -7,7 +7,7 @@ const NotFound = () => (
       404
     </h2>
     <p className="">
-      Page was not found.
+      Page has not found.
     </p>
     <Link className="" to="/">
       To Homepage

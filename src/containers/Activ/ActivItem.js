@@ -2,77 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import { withRouter } from 'react-router-dom';
-import { sessionService } from 'redux-react-session';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { openActivItem } from '../../reducers/session/session.actions';
 
-const ActivItem = ({ history }) => {
+const ActivItem = ({ history, openActivItem }) => {
   const onClickItem = (item) => {
-    sessionService.loadSession()
-      .then(({ token }) => {
-        axios({
-          method: 'post',
-          url: 'http://localhost:3000/activs',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          data: {
-            data: {
-              attributes: {
-                item: item.toISOString().substring(0, 10),
-              },
-            },
-          },
-        })
-          .then(({ data: { data: { id } } }) => {
-            history.push(`/activ/${id}`);
-          })
-          .catch(() => {
-            axios({
-              method: 'get',
-              url: 'http://localhost:3000/activs',
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-              data: {
-                data: {
-                  attributes: {
-                    item: item.toISOString().substring(0, 10),
-                  },
-                },
-              },
-            })
-              .then(({ data: { data: activs } }) => {
-                const activ = activs
-                  .find((activ) => activ.attributes.item === item.toISOString().substring(0, 10));
-
-                if (activ) {
-                  history.push(`/activ/${activ.id}`);
-                } else {
-                  history.push('/not-found');
-                }
-              })
-              .catch(() => {
-                history.push('/not-found');
-              });
-          });
-      })
-      .catch(() => {
-        history.push('signin');
-      });
-    history.push();
+    openActivItem(item, history);
   };
 
   return (
     <Calendar
-      onClickFItem={onClickItem}
+      onClickItem={onClickItem}
     />
   );
 };
 
+const { shape, func } = PropTypes;
+
 ActivItem.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
+  history: shape({
+    push: func,
   }).isRequired,
+  openActivItem: func.isRequired,
 };
 
-export default withRouter(ActivItem);
+const mapDispatchToProps = (dispatch) => ({
+  openActivItem: (item, history) => dispatch(openActivItem(item, history)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(withRouter(ActivItem));
