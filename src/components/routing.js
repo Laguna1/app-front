@@ -13,7 +13,7 @@ const Routing = ({
         React.createElement(component, props)
       ) : (
         <Redirect to={{
-          pathname: '/signin',
+          pathname: '/signup',
           state: { from: props.location },
         }}
         />

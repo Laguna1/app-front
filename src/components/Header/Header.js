@@ -39,8 +39,8 @@ const Header = ({
           </div>
         </div>
       ) : (
-        <Link to="/signup">
-          SIGN UP
+        <Link to="/signin">
+          LOG IN
         </Link>
       )}
     </div>
