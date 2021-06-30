@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormInput = ({
-  name, type, handleChange, value, placeholder,
+  name, type, handleChange, value, placeholder, id,
 }) => (
   <div>
     <input
@@ -11,16 +11,20 @@ const FormInput = ({
       value={value}
       onChange={handleChange}
       placeholder={placeholder}
+      id={id}
     />
   </div>
 );
 
+const { string, func } = PropTypes;
+
 FormInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  name: string.isRequired,
+  type: string.isRequired,
+  handleChange: func.isRequired,
+  value: string.isRequired,
+  placeholder: string.isRequired,
+  id: string.isRequired,
 };
 
 export default FormInput;

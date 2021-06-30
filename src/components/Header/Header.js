@@ -7,7 +7,7 @@ import { selectAuthenticated, selectUser } from '../../reducers/session/session.
 import { logout } from '../../reducers/session/session.actions';
 
 const Header = ({
-  authenticated, logout, history, user: { id },
+  authenticated, logout, history, user: { username },
 }) => (
   <header className="header">
     <div>
@@ -25,7 +25,7 @@ const Header = ({
       {authenticated ? (
         <div className="">
           <div className="">
-            {id}
+            {username}
           </div>
           <div className="">
             <div
@@ -39,8 +39,8 @@ const Header = ({
           </div>
         </div>
       ) : (
-        <Link to="/signin">
-          LOG IN
+        <Link to="/signup">
+          SIGN UP
         </Link>
       )}
     </div>
@@ -48,11 +48,11 @@ const Header = ({
 );
 
 Header.defaultProps = {
-  user: { id: -1 },
+  user: { username: '' },
 };
 
 const {
-  bool, func, shape, number,
+  bool, func, shape, string,
 } = PropTypes;
 
 Header.propTypes = {
@@ -62,7 +62,7 @@ Header.propTypes = {
     push: func,
   }).isRequired,
   user: shape({
-    id: number,
+    username: string,
   }),
 };
 

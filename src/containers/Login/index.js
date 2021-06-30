@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import FormInput from '../../components/formInput';
 import SubmitButton from '../../components/submitButton';
 import { login } from '../../reducers/session/session.actions';
@@ -27,7 +27,7 @@ const SignIn = ({ history, login }) => {
 
   return (
     <div className="sign-in">
-      <h2>I already have account</h2>
+      <h2>Already have account?</h2>
       <span>Enter with your name and password</span>
 
       <form onSubmit={handleSubmit}>
@@ -47,6 +47,10 @@ const SignIn = ({ history, login }) => {
         />
         <div>
           <SubmitButton> Log in </SubmitButton>
+          <div className="">
+            New user
+            <Link to="signup">SIGN UP</Link>
+          </div>
         </div>
       </form>
     </div>

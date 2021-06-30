@@ -14,12 +14,12 @@ export const login = (username, password, history) => () => axios({
   },
 })
   .then(({ data: res }) => {
-    const { data: { attributes: { id } } } = res;
+    const { data: { relationships: { user: { meta: { username } } } } } = res;
     const { data: { attributes: { token } } } = res;
 
     sessionService.saveSession({ token })
       .then(() => {
-        sessionService.saveUser({ id })
+        sessionService.saveUser({ username })
           .then(() => {
             history.push('/');
           });
