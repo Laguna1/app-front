@@ -52,7 +52,7 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <div className="sign-in">
+    <div className="sign-up">
       <h2>Create an account</h2>
       <span>Sign up with your username and password</span>
 

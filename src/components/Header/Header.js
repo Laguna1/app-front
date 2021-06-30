@@ -17,7 +17,7 @@ const Header = ({
 
       <nav>
         <Link to="/activitem">
-          Start track your new activity
+          Create track for your new activity
         </Link>
       </nav>
     </div>
@@ -39,8 +39,8 @@ const Header = ({
           </div>
         </div>
       ) : (
-        <Link to="/signin">
-          LOG IN
+        <Link to="/signup">
+          SIGN UP
         </Link>
       )}
     </div>
