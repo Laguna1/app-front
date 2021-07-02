@@ -58,6 +58,11 @@ export const logout = (history) => () => sessionService.loadSession()
 
 export const openActivItem = (item, history) => () => sessionService.loadSession()
   .then(({ token }) => {
+    const day = item.getDate();
+    const month = item.getMonth() + 1;
+    const year = item.getFullYear();
+
+    const strDate = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
     axios({
       method: 'post',
       url: 'http://localhost:3000/activs',
@@ -67,7 +72,7 @@ export const openActivItem = (item, history) => () => sessionService.loadSession
       data: {
         data: {
           attributes: {
-            item: item.toISOString().substring(0, 10),
+            item: strDate,
           },
         },
       },
@@ -85,15 +90,14 @@ export const openActivItem = (item, history) => () => sessionService.loadSession
           data: {
             data: {
               attributes: {
-                item: item.toISOString().substring(0, 10),
+                item: strDate,
               },
             },
           },
         })
           .then(({ data: { data: activs } }) => {
             const activ = activs
-              .find((activ) => activ.attributes.item === item.toISOString()
-                .substring(0, 10));
+              .find((activ) => activ.attributes.item === strDate);
 
             if (activ) {
               history.push(`/activ/${activ.id}`);

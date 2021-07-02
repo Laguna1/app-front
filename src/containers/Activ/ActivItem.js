@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Calendar from 'react-calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import 'react-calendar/dist/Calendar.css';
+
 import { openActivItem } from '../../reducers/session/session.actions';
 
 const ActivItem = ({ history, openActivItem }) => {
@@ -11,9 +13,11 @@ const ActivItem = ({ history, openActivItem }) => {
   };
 
   return (
-    <Calendar
-      onClickItem={onClickItem}
-    />
+    <div className="calendar">
+      <Calendar
+        onClickItem={onClickItem}
+      />
+    </div>
   );
 };
 

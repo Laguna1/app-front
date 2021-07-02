@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import TextForm from './TextForm';
 import NumberForm from './NumberForm';
 
-const FormActiv = ({ match: { params: { activId } }, history, setRefresh }) => {
+const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
   const [name, setName] = useState('');
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -25,6 +25,13 @@ const FormActiv = ({ match: { params: { activId } }, history, setRefresh }) => {
 
   const decrementDuration = () => {
     setDuration((prev) => prev - 1);
+  };
+  const incrementRepeat = () => {
+    setRepeat((prev) => prev + 1);
+  };
+
+  const decrementRepeat = () => {
+    setRepeat((prev) => prev - 1);
   };
 
   const setDefault = () => {
@@ -71,13 +78,14 @@ const FormActiv = ({ match: { params: { activId } }, history, setRefresh }) => {
 
   return (
     <div>
+      <h4>Add Track</h4>
       <form onSubmit={onSubmit} className="activ-form">
         <TextForm
           id="name"
           componentClassName="activ-form"
           handleChange={({ target: { value } }) => setName(value)}
           value={name}
-          required
+          label="Name"
         />
         <NumberForm
           id="distance"
@@ -95,11 +103,13 @@ const FormActiv = ({ match: { params: { activId } }, history, setRefresh }) => {
           decrement={decrementDuration}
           label="Duration"
         />
-        <input
-          name="repeat"
-          onChange={({ target: { value } }) => setRepeat(value)}
+        <NumberForm
+          id="repeat"
+          handleChange={({ target: { value } }) => setRepeat(value)}
           value={repeat}
-          required
+          increment={incrementRepeat}
+          decrement={decrementRepeat}
+          label="Repeat"
         />
         <input
           type="submit"
@@ -109,7 +119,7 @@ const FormActiv = ({ match: { params: { activId } }, history, setRefresh }) => {
   );
 };
 
-FormActiv.propTypes = {
+FormTrack.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       activId: PropTypes.string,
@@ -121,4 +131,4 @@ FormActiv.propTypes = {
   setRefresh: PropTypes.func.isRequired,
 };
 
-export default withRouter(FormActiv);
+export default withRouter(FormTrack);

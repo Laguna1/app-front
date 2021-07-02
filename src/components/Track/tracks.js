@@ -4,8 +4,9 @@ import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import './track.css';
 
-import { addTracks } from '../reducers/track/track.actions';
+import { addTracks } from '../../reducers/track/track.actions';
 
 const TracksList = ({
   tracks, addTracks, history,
@@ -34,7 +35,8 @@ const TracksList = ({
   };
 
   return (
-    <div>
+    <div className="tracks-list">
+      <h4>All Tracks</h4>
       {tracks.map(({
         id,
         attributes: {
@@ -45,16 +47,22 @@ const TracksList = ({
         },
       }) => (
         <div
+          className="track"
           onClick={() => handleClick(name)}
           onKeyPress={() => {}}
           role="link"
           tabIndex={0}
           key={id}
         >
-          <div>{name}</div>
-          <div>{distance}</div>
-          <div>{duration}</div>
-          <div>{repeat}</div>
+          <div className="one-train">
+            {` Exercize: ${name}`}
+          </div>
+          <div>
+            {`Distance: ${distance} meters`}
+          </div>
+          <div>
+            {`${repeat}repeats with ${duration} min. each time`}
+          </div>
         </div>
       ))}
     </div>

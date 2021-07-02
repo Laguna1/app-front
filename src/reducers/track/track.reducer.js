@@ -1,9 +1,8 @@
 import TrackActionTypes from './track.types';
 import { defaultTracks } from './track.data';
-import { mapTracksToChart } from './track.utils';
 
 const INITIAL_STATE = {
-  tracks: mapTracksToChart(defaultTracks),
+  tracks: defaultTracks,
 };
 
 const trackReducer = (state = INITIAL_STATE, action) => {
@@ -11,7 +10,7 @@ const trackReducer = (state = INITIAL_STATE, action) => {
     case TrackActionTypes.ADD_TRACKS:
       return {
         ...state,
-        tracks: mapTracksToChart(action.payload),
+        tracks: action.payload,
       };
     default:
       return state;

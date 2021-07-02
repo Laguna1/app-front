@@ -5,10 +5,11 @@ import { createStructuredSelector } from 'reselect';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
-import { selectTracks } from '../reducers/track/track.selectors';
+import { selectTracksForProgress, selectTrackForProgress } from '../reducers/track/track.selectors';
 
-const Progress = ({ tracks }) => (
+const Progress = ({ tracks, track: { attributes: { name } } }) => (
   <div>
+    <h2 className="progress-page-title">{name}</h2>
     <BarChart
       width={500}
       height={300}
@@ -49,18 +50,28 @@ const Progress = ({ tracks }) => (
   </div>
 );
 
+const {
+  string, number, arrayOf, shape,
+} = PropTypes;
+
 Progress.propTypes = {
-  tracks: PropTypes.arrayOf(
-    PropTypes.shape({
-      item: PropTypes.string,
-      distance: PropTypes.number,
-      duration: PropTypes.number,
+  tracks: arrayOf(
+    shape({
+      item: string,
+      distance: number,
+      duration: number,
     }),
   ).isRequired,
+  track: shape({
+    attributes: shape({
+      name: string,
+    }),
+  }).isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  tracks: selectTracks,
+  tracks: selectTracksForProgress,
+  track: selectTrackForProgress,
 });
 
 export default connect(

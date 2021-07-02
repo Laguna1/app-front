@@ -8,7 +8,7 @@ const NumberForm = ({
     <label htmlFor={id}>{label}</label>
     <span
       onClick={decrement}
-      onKeyPress={() => {}}
+      onKeyPress={decrement}
       role="link"
       tabIndex={0}
       className="number-form__decrement"
@@ -19,14 +19,14 @@ const NumberForm = ({
       id={id}
       type="number"
       min="1"
-      max="99"
+      max="9999"
       onChange={handleChange}
       value={value}
       required
     />
     <span
       onClick={increment}
-      onKeyPress={() => {}}
+      onKeyPress={increment}
       role="link"
       tabIndex={0}
       className="number-form__increment"

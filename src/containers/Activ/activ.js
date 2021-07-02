@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import FormActiv from '../../components/formActiv';
-import TracksList from '../../components/tracks';
+import FormTrack from '../../components/formTrack';
+import TracksList from '../../components/Track/tracks';
 
 const Activ = ({ match: { params: { activId } }, history }) => {
+  const [date, setDate] = useState(' ');
   const [tracks, setTracks] = useState([]);
   const [refresh, setRefresh] = useState(1 + Math.random() * (100 - 1));
 
@@ -24,6 +25,17 @@ const Activ = ({ match: { params: { activId } }, history }) => {
         })
           .then(({ data: { data } }) => {
             if (mounted) {
+              axios({
+                method: 'get',
+                url: `http://localhost:3000/activs/${activId}`,
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
+                .then(({ data: { data: { attributes: { item } } } }) => {
+                  setDate(new Date(`${item}T00:00:00`).toDateString());
+                })
+                .catch(() => history.push('/not-found'));
               setTracks(data);
             }
           })
@@ -44,8 +56,9 @@ const Activ = ({ match: { params: { activId } }, history }) => {
   }, [refresh]);
 
   return (
-    <div>
-      <FormActiv setRefresh={setRefresh} />
+    <div className="activ">
+      <FormTrack setRefresh={setRefresh} />
+      <h5>{date}</h5>
       <TracksList tracks={tracks} />
     </div>
   );
