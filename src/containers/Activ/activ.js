@@ -4,7 +4,7 @@ import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import FormTrack from '../../components/formTrack';
-import TracksList from '../../components/Track/tracks';
+import TracksList from '../Track/tracks';
 
 const Activ = ({ match: { params: { activId } }, history }) => {
   const [date, setDate] = useState(' ');

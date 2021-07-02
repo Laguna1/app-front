@@ -29,9 +29,8 @@ const SignUp = ({ history }) => {
         .then(() => {
           history.push('/signin');
         })
-        .catch((err) => {
-          // eslint-disable-next-line
-              console.log(err);
+        .catch(() => {
+          history.push('/not-found');
         });
     }
   };

@@ -1,10 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 header {
-  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
+  background: rgb(65, 181, 232);
   font-family: 'Open Sans', sans-serif;
-  align-items: center;
-  justify-content: center;
+  max-height: 7%;
+  margin: 0;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo-title {
+  color: white;
+  letter-spacing: 0.6px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 5vw;
+}
+
+.logged-item {
+  display: none;
+}
+
+.add-item {
+  color: white;
+  font-size: 5vw;
+  position: absolute;
+  left: 5%;
+  top: 1%;
+}
+
+.logged-user-name {
+  color: white;
+  font-size: 2.5vw;
+  position: absolute;
+  right: 25%;
+  top: 2%;
 }

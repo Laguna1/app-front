@@ -25,9 +25,8 @@ export const login = (username, password, history) => () => axios({
           });
       });
   })
-  .catch((err) => {
-    // eslint-disable-next-line
-              console.log(err);
+  .catch(() => {
+    history.push('/not-found');
   });
 
 export const logout = (history) => () => sessionService.loadSession()
@@ -46,14 +45,12 @@ export const logout = (history) => () => sessionService.loadSession()
             history.push('/');
           });
       })
-      .catch((err) => {
-        // eslint-disable-next-line
-                console.log(err);
+      .catch(() => {
+        history.push('/not-found');
       });
   })
-  .catch((err) => {
-    // eslint-disable-next-line
-              console.log(err);
+  .catch(() => {
+    history.push('/not-found');
   });
 
 export const openActivItem = (item, history) => () => sessionService.loadSession()
