@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import FormInput from '../../components/formInput';
 import SubmitButton from '../../components/SubmitButton/submitButton';
+import './Signup.css';
 
 const SignUp = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -51,40 +52,43 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <div className="sign-up">
-      <h2>Create an account</h2>
-      <span>Sign up with your username and password</span>
+    <div className="signup-page">
+      <div className="signup">
+        <h2>New account</h2>
 
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          name="username"
-          type="username"
-          handleChange={handleUsernameChange}
-          value={username}
-          placeholder="username"
-        />
-        <FormInput
-          name="password"
-          type="password"
-          value={password}
-          handleChange={handlePasswordChange}
-          placeholder="password"
-        />
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            name="Username: "
+            type="username"
+            handleChange={handleUsernameChange}
+            value={username}
+            placeholder="Username"
+          />
+          <FormInput
+            name="Password: "
+            type="password"
+            value={password}
+            handleChange={handlePasswordChange}
+            placeholder="Password"
+          />
 
-        <FormInput
-          name="confirmPassword"
-          type="password"
-          handleChange={handleConfirmPassword}
-          value={confirmPassword}
-          placeholder="confirm password"
-        />
+          <FormInput
+            name="ConfirmPassword: "
+            type="password"
+            handleChange={handleConfirmPassword}
+            value={confirmPassword}
+            placeholder="Confirm password"
+          />
 
-        <div>
-          <SubmitButton> Sign up </SubmitButton>
-        </div>
-      </form>
-      <span>Already registered?</span>
-      <Link to="signin">Log in</Link>
+          <div>
+            <SubmitButton> Sign up </SubmitButton>
+          </div>
+          <span className="text">Already registered?</span>
+          <div className="text-login">
+            <Link to="signin">Log in</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
