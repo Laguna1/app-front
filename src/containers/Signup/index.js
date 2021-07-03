@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import FormInput from '../../components/formInput';
-import SubmitButton from '../../components/submitButton';
+import SubmitButton from '../../components/SubmitButton/submitButton';
 
 const SignUp = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -83,6 +83,8 @@ const SignUp = ({ history }) => {
           <SubmitButton> Sign up </SubmitButton>
         </div>
       </form>
+      <span>Already registered?</span>
+      <Link to="signin">Log in</Link>
     </div>
   );
 };

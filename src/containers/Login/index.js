@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import FormInput from '../../components/formInput';
-import SubmitButton from '../../components/submitButton';
+import SubmitButton from '../../components/SubmitButton/submitButton';
 import { login } from '../../reducers/session/session.actions';
+import './Login.css';
 
 const SignIn = ({ history, login }) => {
   const [username, setUsername] = useState('');
@@ -26,32 +27,36 @@ const SignIn = ({ history, login }) => {
   };
 
   return (
-    <div className="sign-in">
-      <span>Enter with your name and password</span>
+    <div className="login-page">
+      <div className="login">
+        <span className="text-login">Log in</span>
 
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          name="username"
-          type="username"
-          handleChange={handleUsernameChange}
-          value={username}
-          placeholder="username"
-        />
-        <FormInput
-          name="password"
-          type="password"
-          value={password}
-          handleChange={handlePasswordChange}
-          placeholder="password"
-        />
-        <div>
-          <SubmitButton> Log in </SubmitButton>
-          <div className="">
-            New user?
-            <Link to="signup">Sign up</Link>
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            name="Username:"
+            type="username"
+            handleChange={handleUsernameChange}
+            value={username}
+            placeholder="username"
+          />
+          <FormInput
+            name="Password:"
+            type="password"
+            value={password}
+            handleChange={handlePasswordChange}
+            placeholder="password"
+          />
+          <div>
+            <div className="">
+              <SubmitButton> Log in </SubmitButton>
+            </div>
+            <span className="text-signup">New user?</span>
+            <div className="btn-signup">
+              <Link to="signup">Sign up</Link>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
