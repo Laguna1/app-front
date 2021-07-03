@@ -9,10 +9,11 @@ const TextForm = ({
       <input
         id={id}
         className={`${componentClassName}__form-text__input`}
+        name="Name: "
         type="text"
         onChange={handleChange}
         value={value}
-        placeholder=" "
+        placeholder="Name"
         required
       />
       <label htmlFor={id} className={`${componentClassName}__form-text__label`}>{label}</label>

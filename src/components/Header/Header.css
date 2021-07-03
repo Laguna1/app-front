@@ -8,6 +8,7 @@ header {
   max-height: 7%;
   margin: 0;
   padding: 10px;
+  position: relative;
 }
 
 a {
@@ -30,16 +31,16 @@ a {
 .add-item {
   color: white;
   font-weight: bold;
-  font-size: 5vw;
+  font-size: 7vw;
   position: absolute;
   left: 5%;
-  top: 0.5%;
+  top: 0;
 }
 
 .logged-user-name {
   color: white;
   font-size: 2.5vw;
   position: absolute;
-  right: 25%;
-  top: 2%;
+  right: 5%;
+  top: 19%;
 }

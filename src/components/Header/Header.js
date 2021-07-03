@@ -35,7 +35,7 @@ const Header = ({
                   role="button"
                   tabIndex={0}
                 >
-                  <i className="fa fa-sign-out" aria-hidden="true" />
+                  <i className="fa fa-sign-out fa-2x" aria-hidden="true" />
                 </div>
               </div>
             </div>

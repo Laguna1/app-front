@@ -13,18 +13,18 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
   const [repeat, setRepeat] = useState(0);
 
   const incrementDistance = () => {
-    setDistance((prev) => prev + 1);
+    setDistance((prev) => prev + 100);
   };
 
   const decrementDistance = () => {
-    setDistance((prev) => prev - 1);
+    setDistance((prev) => prev - 100);
   };
   const incrementDuration = () => {
-    setDuration((prev) => prev + 1);
+    setDuration((prev) => prev + 5);
   };
 
   const decrementDuration = () => {
-    setDuration((prev) => prev - 1);
+    setDuration((prev) => prev - 5);
   };
   const incrementRepeat = () => {
     setRepeat((prev) => prev + 1);
@@ -82,10 +82,9 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
       <form onSubmit={onSubmit} className="activ-form">
         <TextForm
           id="name"
-          componentClassName="activ-form"
           handleChange={({ target: { value } }) => setName(value)}
+          label="Training`s name: "
           value={name}
-          label="Name"
         />
         <NumberForm
           id="distance"
@@ -93,7 +92,7 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
           value={distance}
           increment={incrementDistance}
           decrement={decrementDistance}
-          label="Distance"
+          label="Distance(meters): "
         />
         <NumberForm
           id="duration"
@@ -101,7 +100,7 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
           value={duration}
           increment={incrementDuration}
           decrement={decrementDuration}
-          label="Duration"
+          label="Duration(minutes): "
         />
         <NumberForm
           id="repeat"
@@ -109,7 +108,7 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
           value={repeat}
           increment={incrementRepeat}
           decrement={decrementRepeat}
-          label="Repeat"
+          label="Repeats(times): "
         />
         <input
           type="submit"

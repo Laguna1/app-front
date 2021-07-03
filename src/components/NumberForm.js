@@ -17,9 +17,7 @@ const NumberForm = ({
     </span>
     <input
       id={id}
-      type="number"
-      min="1"
-      max="9999"
+      type="string"
       onChange={handleChange}
       value={value}
       required
