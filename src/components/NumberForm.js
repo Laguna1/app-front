@@ -34,12 +34,12 @@ const NumberForm = ({
   </div>
 );
 
-const { string, func, number } = PropTypes;
+const { string, func } = PropTypes;
 
 NumberForm.propTypes = {
   id: string.isRequired,
   handleChange: func.isRequired,
-  value: number.isRequired,
+  value: string.isRequired,
   label: string.isRequired,
   increment: func.isRequired,
   decrement: func.isRequired,

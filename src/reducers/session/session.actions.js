@@ -53,11 +53,11 @@ export const logout = (history) => () => sessionService.loadSession()
     history.push('/not-found');
   });
 
-export const openActivItem = (item, history) => () => sessionService.loadSession()
+export const openActivItem = (date, history) => () => sessionService.loadSession()
   .then(({ token }) => {
-    const day = item.getDate();
-    const month = item.getMonth() + 1;
-    const year = item.getFullYear();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
 
     const strDate = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
     axios({
