@@ -15,7 +15,8 @@ const ActivItem = ({ history, openActivItem }) => {
   return (
     <div className="calendar">
       <Calendar
-        onClickItem={onClickItem}
+        onClickDay={onClickItem}
+        display="center"
       />
     </div>
   );

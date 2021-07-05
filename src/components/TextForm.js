@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TextForm = ({
-  id, componentClassName, handleChange, value, label,
+  id, handleChange, value, label,
 }) => (
-  <div className={`${componentClassName}__form-text`}>
-    <div className={`${componentClassName}__form-text__control`}>
+  <div className="">
+    <div className="">
       <input
         id={id}
-        className={`${componentClassName}__form-text__input`}
+        className=""
         name="Name: "
         type="text"
         onChange={handleChange}
@@ -16,8 +16,8 @@ const TextForm = ({
         placeholder="Name"
         required
       />
-      <label htmlFor={id} className={`${componentClassName}__form-text__label`}>{label}</label>
-      <div className={`${componentClassName}__form-text__bar`} />
+      <label htmlFor={id} className="">{label}</label>
+      <div className="" />
     </div>
   </div>
 );
@@ -26,7 +26,6 @@ const { string, func } = PropTypes;
 
 TextForm.propTypes = {
   id: string.isRequired,
-  componentClassName: string.isRequired,
   handleChange: func.isRequired,
   value: string.isRequired,
   label: string.isRequired,
