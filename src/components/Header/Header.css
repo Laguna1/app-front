@@ -37,10 +37,32 @@ a {
   top: 0;
 }
 
+.user-profile {
+  position: absolute;
+  top: 44%;
+  right: 17%;
+  color: white;
+}
+
 .logged-user-name {
   color: white;
   font-size: 2.5vw;
   position: absolute;
   right: 5%;
   top: 19%;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .user-profile {
+    top: 38%;
+    right: 15%;
+  }
+}
+
+@media (max-width: 425px) {
+  .user-profile {
+    top: 53%;
+    right: 2%;
+  }
 }

@@ -9,7 +9,7 @@ import { selectAuthenticated, selectUser } from '../../reducers/session/session.
 import { logout } from '../../reducers/session/session.actions';
 
 const Header = ({
-  authenticated, logout, history,
+  authenticated, logout, history, user: { username },
 }) => {
   const [hidden, setHidden] = useState(true);
 
@@ -28,6 +28,7 @@ const Header = ({
                   +
                 </Link>
               </nav>
+              <div className="user-profile">{username}</div>
               <div className="logged-user-name">
                 <div
                   onClick={() => logout(history)}
@@ -79,8 +80,12 @@ const Header = ({
   );
 };
 
+Header.defaultProps = {
+  user: { username: '' },
+};
+
 const {
-  bool, func, shape,
+  bool, func, shape, string,
 } = PropTypes;
 
 Header.propTypes = {
@@ -89,6 +94,9 @@ Header.propTypes = {
   history: shape({
     push: func,
   }).isRequired,
+  user: shape({
+    username: string,
+  }),
 };
 
 const mapStateToProps = createStructuredSelector({
