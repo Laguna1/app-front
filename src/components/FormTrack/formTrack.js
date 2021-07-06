@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import TextForm from '../TextForm';
 import NumberForm from '../NumberForm';
 import './formTrack.css';
+import { baseUrl } from '../../utilities/api';
 
 const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
   const [name, setName] = useState('');
@@ -49,7 +50,7 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
       .then(({ token }) => {
         axios({
           method: 'post',
-          url: `http://localhost:3000/activs/${activId}/tracks`,
+          url: `${baseUrl}/activs/${activId}/tracks`,
           headers: {
             Authorization: `Bearer ${token}`,
           },

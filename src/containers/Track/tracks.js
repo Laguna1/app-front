@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import './track.css';
 
 import { addTracks } from '../../reducers/track/track.actions';
+import { baseUrl } from '../../utilities/api';
 
 const TracksList = ({
   tracks, addTracks, history,
@@ -16,7 +17,7 @@ const TracksList = ({
       .then(({ token }) => {
         axios({
           method: 'get',
-          url: `http://localhost:3000/progress/${name}`,
+          url: `${baseUrl}/progress/${name}`,
           headers: {
             Authorization: `Bearer ${token}`,
           },

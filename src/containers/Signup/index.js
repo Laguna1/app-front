@@ -6,6 +6,7 @@ import { withRouter, Link } from 'react-router-dom';
 import FormInput from '../../components/formInput';
 import SubmitButton from '../../components/SubmitButton/submitButton';
 import './Signup.css';
+import { baseUrl } from '../../utilities/api';
 
 const SignUp = ({ history }) => {
   const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ const SignUp = ({ history }) => {
     if (password === confirmPassword) {
       axios({
         method: 'post',
-        url: 'http://localhost:3000/sign_up',
+        url: `${baseUrl}/sign_up`,
         data: {
           data: {
             attributes: {

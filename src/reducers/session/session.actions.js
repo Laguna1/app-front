@@ -1,9 +1,10 @@
 import { sessionService } from 'redux-react-session';
 import axios from 'axios';
+import { baseUrl } from '../../utilities/api';
 
 export const login = (username, password, history) => () => axios({
   method: 'post',
-  url: 'http://localhost:3000/login',
+  url: `${baseUrl}/login`,
   data: {
     data: {
       attributes: {
@@ -33,7 +34,7 @@ export const logout = (history) => () => sessionService.loadSession()
   .then(({ token }) => {
     axios({
       method: 'delete',
-      url: 'http://localhost:3000/logout',
+      url: `${baseUrl}/logout`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -62,7 +63,7 @@ export const openActivItem = (date, history) => () => sessionService.loadSession
     const strDate = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
     axios({
       method: 'post',
-      url: 'http://localhost:3000/activs',
+      url: `${baseUrl}/activs`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -80,7 +81,7 @@ export const openActivItem = (date, history) => () => sessionService.loadSession
       .catch(() => {
         axios({
           method: 'get',
-          url: 'http://localhost:3000/activs',
+          url: `${baseUrl}/activs`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
