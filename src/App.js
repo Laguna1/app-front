@@ -9,6 +9,7 @@ import SignIn from './containers/Login';
 import SignUp from './containers/Signup';
 import NotFound from './containers/NotFound/notFound';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import ActivItem from './containers/Activ/ActivItem';
 import Activ from './containers/Activ/activ';
 import Progress from './containers/progress';
@@ -30,6 +31,7 @@ const App = ({ authenticated, checked }) => (
             <Route path="/*" component={NotFound} />
           </Switch>
           )}
+    <Footer />
   </div>
 );
 

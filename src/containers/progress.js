@@ -9,7 +9,10 @@ import { selectTracksForProgress, selectTrackForProgress } from '../reducers/tra
 
 const Progress = ({ tracks, track: { attributes: { name } } }) => (
   <div>
-    <h2 className="progress-page-title">{name}</h2>
+    <h2 className="progress-page-title">
+      {name}
+      <span> diagram</span>
+    </h2>
     <BarChart
       width={500}
       height={300}

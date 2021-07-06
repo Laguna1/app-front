@@ -20,11 +20,11 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
     setDistance((prev) => prev - 100);
   };
   const incrementDuration = () => {
-    setDuration((prev) => prev + 5);
+    setDuration((prev) => prev + 3);
   };
 
   const decrementDuration = () => {
-    setDuration((prev) => prev - 5);
+    setDuration((prev) => prev - 3);
   };
   const incrementRepeat = () => {
     setRepeat((prev) => prev + 1);
