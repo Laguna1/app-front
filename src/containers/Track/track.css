@@ -1,6 +1,20 @@
+.tracks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tracks-list h3 {
+  color: orange;
+}
+
 .track {
-  background-color: lightgray;
+  background-color: whitesmoke;
+  border-radius: 25px;
   margin-bottom: 10px;
+  width: 90%;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .one-train {

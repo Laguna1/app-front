@@ -12,7 +12,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ActivItem from './containers/Activ/ActivItem';
 import Activ from './containers/Activ/activ';
-import Progress from './containers/progress';
+import Progress from './containers/Progress/progress';
 import Routing from './components/routing';
 import { selectChecked, selectAuthenticated } from './reducers/session/session.selectors';
 

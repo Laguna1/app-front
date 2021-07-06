@@ -5,17 +5,18 @@ import { createStructuredSelector } from 'reselect';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
-import { selectTracksForProgress, selectTrackForProgress } from '../reducers/track/track.selectors';
+import { selectTracksForProgress, selectTrackForProgress } from '../../reducers/track/track.selectors';
+import './progress.css';
 
 const Progress = ({ tracks, track: { attributes: { name } } }) => (
-  <div>
+  <div className="progress-page">
     <h2 className="progress-page-title">
+      <span> Diagram for: </span>
       {name}
-      <span> diagram</span>
     </h2>
     <BarChart
-      width={500}
-      height={300}
+      width={300}
+      height={200}
       data={tracks}
       margin={{
         top: 5,
@@ -29,12 +30,12 @@ const Progress = ({ tracks, track: { attributes: { name } } }) => (
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="distance" fill="#8884d8" />
+      <Bar dataKey="distance" fill="#8fe18b" />
     </BarChart>
 
     <BarChart
-      width={500}
-      height={300}
+      width={300}
+      height={200}
       data={tracks}
       margin={{
         top: 5,
@@ -48,7 +49,7 @@ const Progress = ({ tracks, track: { attributes: { name } } }) => (
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="duration" fill="#82ca9d" />
+      <Bar dataKey="duration" fill="#f22527" />
     </BarChart>
   </div>
 );

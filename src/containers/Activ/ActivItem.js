@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import 'react-calendar/dist/Calendar.css';
+import './activItem.css';
 
 import { openActivItem } from '../../reducers/session/session.actions';
 

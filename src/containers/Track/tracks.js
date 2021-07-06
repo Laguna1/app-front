@@ -36,7 +36,7 @@ const TracksList = ({
 
   return (
     <div className="tracks-list">
-      <h4>All Tracks</h4>
+      <h3>Track`s list</h3>
       {tracks.map(({
         id,
         attributes: {

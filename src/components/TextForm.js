@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 const TextForm = ({
   id, componentClassName, handleChange, value, label,
 }) => (
-  <div className={`${componentClassName}__form-text`}>
+  <div className="form-text">
     <div className={`${componentClassName}__form-text__control`}>
+      <label htmlFor={id} className={`${componentClassName}__form-text__label`}>{label}</label>
       <input
         id={id}
         className={`${componentClassName}__form-text__input`}
@@ -16,7 +17,7 @@ const TextForm = ({
         placeholder="Name"
         required
       />
-      <label htmlFor={id} className={`${componentClassName}__form-text__label`}>{label}</label>
+
       <div className={`${componentClassName}__form-text__bar`} />
     </div>
   </div>

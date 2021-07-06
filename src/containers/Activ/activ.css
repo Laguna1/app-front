@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.activ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.track-date {
+  margin-left: 50px;
+  font-size: xx-large;
+  color: orange;
+}

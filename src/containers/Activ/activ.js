@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import FormTrack from '../../components/formTrack';
+import FormTrack from '../../components/FormTrack/formTrack';
 import TracksList from '../Track/tracks';
+import './activ.css';
 
 const Activ = ({ match: { params: { activId } }, history }) => {
   const [date, setDate] = useState(' ');
@@ -58,7 +59,10 @@ const Activ = ({ match: { params: { activId } }, history }) => {
   return (
     <div className="activ">
       <FormTrack setRefresh={setRefresh} />
-      <h5>{date}</h5>
+      <h5 className="track-date">
+        Track`s date --
+        {date}
+      </h5>
       <TracksList tracks={tracks} />
     </div>
   );

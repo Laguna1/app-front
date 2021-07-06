@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { sessionService } from 'redux-react-session';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import TextForm from './TextForm';
-import NumberForm from './NumberForm';
+import TextForm from '../TextForm';
+import NumberForm from '../NumberForm';
+import './formTrack.css';
 
 const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
   const [name, setName] = useState('');
@@ -77,13 +78,13 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
   };
 
   return (
-    <div>
+    <div className="add-track">
       <h4>Add Track</h4>
       <form onSubmit={onSubmit} className="activ-form">
         <TextForm
+          label="Name: "
           id="name"
           handleChange={({ target: { value } }) => setName(value)}
-          label="Training`s name: "
           value={name}
         />
         <NumberForm
@@ -92,7 +93,7 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
           value={distance}
           increment={incrementDistance}
           decrement={decrementDistance}
-          label="Distance(meters): "
+          label="Distance  (meters): "
         />
         <NumberForm
           id="duration"
@@ -108,9 +109,10 @@ const FormTrack = ({ match: { params: { activId } }, history, setRefresh }) => {
           value={repeat}
           increment={incrementRepeat}
           decrement={decrementRepeat}
-          label="Repeats(times): "
+          label="Repeats (times): "
         />
         <input
+          className="submit-btn"
           type="submit"
         />
       </form>
