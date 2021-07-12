@@ -1,137 +1,79 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import FormInput from '../../components/formInput';
+import SubmitButton from '../../components/SubmitButton/submitButton';
+import { login } from '../../reducers/session/session.actions';
 import './Login.css';
-import { loginUser } from '../../actions/user';
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      errors: [],
-    };
-  }
+const SignIn = ({ history, login }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  componentDidUpdate(prevProps) {
-    const { user, isLogin } = this.props;
-    if (user !== prevProps.user && isLogin) {
-      const { history } = this.props;
-      history.push('/main');
-    }
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(username, password, history);
+  };
 
-  handleChangeName = (e) => {
-    this.setState({
-      username: e.target.value,
-    });
-  }
+  const handleUsernameChange = (event) => {
+    const { value } = event.target;
+    setUsername(value);
+  };
 
-  handleChangePassword = (e) => {
-    this.setState({
-      password: e.target.value,
-    });
-  }
+  const handlePasswordChange = (event) => {
+    const { value } = event.target;
+    setPassword(value);
+  };
 
-  handleSubmit= async (e) => {
-    e.preventDefault();
-    const { username, password } = this.state;
-    const { loginUser } = this.props;
-    const response = await loginUser({ username, password });
-    const { error } = this.props;
+  return (
+    <div className="login-page">
+      <div className="login">
+        <span className="text-login">Log in</span>
 
-    if (response.data.status === 403) {
-      this.setState({
-        errors: error,
-      });
-    }
-  }
-
-  handleErrors = () => {
-    const { errors } = this.state;
-    // setTimeout(() => this.setState({ errors: '' }), 3000);
-    if (errors.length > 0) {
-      return (
-        <div>
-          <ul>
-            {errors.map((error) => <li key={error}>{error}</li>)}
-          </ul>
-        </div>
-      );
-    }
-    return null;
-  }
-
-  render() {
-    const { username, password, errors } = this.state;
-    return (
-      <section className="login">
-        <div>
-          <ul id="errors-div" className="errors-div">
-            {errors ? this.handleErrors() : null}
-          </ul>
-        </div>
-        <h2>Sign In</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Username"
-            type="text"
-            name="username"
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            name="Username:"
+            type="username"
+            handleChange={handleUsernameChange}
             value={username}
-            onChange={this.handleChangeName}
+            placeholder="username"
           />
-          <input
-            placeholder="Password"
+          <FormInput
+            name="Password:"
             type="password"
-            name="password"
             value={password}
-            onChange={this.handleChangePassword}
+            handleChange={handlePasswordChange}
+            placeholder="password"
           />
-          <button className="btn-login" placeholder="submit" type="submit">
-            Sign In
-          </button>
-
-          <button type="button" className="btn-signup">
-            <Link to="/signup">New Account</Link>
-          </button>
-
+          <div>
+            <div className="">
+              <SubmitButton> Log in </SubmitButton>
+            </div>
+            <span className="text-signup">New user?</span>
+            <div className="btn-signup">
+              <Link to="signup">Sign up</Link>
+            </div>
+          </div>
         </form>
+      </div>
+    </div>
+  );
+};
 
-      </section>
-    );
-  }
-}
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-  isLogin: state.user.isLogin,
-  error: state.user.errors,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loginUser: (data) => dispatch(loginUser(data)),
-});
-
-Login.propTypes = {
+SignIn.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
-  }),
-  loginUser: PropTypes.func,
-  user: PropTypes.shape({}),
-  isLogin: PropTypes.bool,
-  error: PropTypes.instanceOf(Array),
+  }).isRequired,
+  login: PropTypes.func.isRequired,
 
 };
 
-Login.defaultProps = {
-  history: {},
-  loginUser: () => {},
-  user: {},
-  isLogin: false,
-  error: [],
-};
+const mapDispatchToProps = (dispatch) => ({
+  login: (username, password, history) => dispatch(login(username, password, history)),
+});
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default connect(
+  null,
+  mapDispatchToProps,
+)(withRouter(SignIn));

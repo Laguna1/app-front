@@ -1,0 +1,10 @@
+.calendar {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.react-calendar {
+  border: 5px solid rgb(65, 181, 232) !important;
+  border-radius: 25px;
+}

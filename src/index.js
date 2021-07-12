@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers';
-import App from './components/App/App';
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+import './index.css';
+import App from './App';
+import store from './reducers/store';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root'),
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root') || document.createElement('div'), // for testing purposes
 );
+
+// eslint-disable-next-line no-undef
+registerServiceWorker();
