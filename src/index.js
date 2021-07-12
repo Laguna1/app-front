@@ -14,8 +14,5 @@ ReactDOM.render(
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root') || document.createElement('div'), // for testing purposes
+  document.getElementById('root'),
 );
-
-// eslint-disable-next-line no-undef
-registerServiceWorker();
