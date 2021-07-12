@@ -1,3 +1,12 @@
 .not-found {
-  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid yellow;
+  border-radius: 25px;
+  margin: 50px;
+}
+
+.nf-title {
+  font-size: 25px;
 }
