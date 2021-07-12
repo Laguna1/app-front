@@ -56,13 +56,17 @@ const TracksList = ({
           key={id}
         >
           <div className="one-train">
-            {` Exercize: ${name}`}
+            <small>Exercize:</small>
+            {` ${name}`}
           </div>
           <div>
-            {`Distance: ${distance} meters`}
+            <small>Distance:</small>
+            {` ${distance} meters`}
           </div>
           <div>
-            {`${repeat}repeats with ${duration} min. each time`}
+            <small>
+              {`${repeat}repeats with ${duration} min. each time`}
+            </small>
           </div>
         </div>
       ))}
