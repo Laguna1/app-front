@@ -5,6 +5,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import FormTrack from '../../components/FormTrack/formTrack';
 import TracksList from '../Track/tracks';
+import { baseUrl } from '../../utilities/api';
 import './activ.css';
 
 const Activ = ({ match: { params: { activId } }, history }) => {
@@ -19,7 +20,7 @@ const Activ = ({ match: { params: { activId } }, history }) => {
       .then(({ token }) => {
         axios({
           method: 'get',
-          url: `http://localhost:3000/activs/${activId}/tracks`,
+          url: `${baseUrl}/activs/${activId}/tracks`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -28,7 +29,7 @@ const Activ = ({ match: { params: { activId } }, history }) => {
             if (mounted) {
               axios({
                 method: 'get',
-                url: `http://localhost:3000/activs/${activId}`,
+                url: `${baseUrl}/activs/${activId}`,
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },
