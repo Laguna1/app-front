@@ -5,14 +5,17 @@
 This project is an external part of the "Tracking App" application, and for the server part the Rails application with the necessary endpoints is used.
 The server side for this application is available [here: 'api-back'](https://final-api-backend.herokuapp.com/)
 
-- User can to sign up
-![Screen](./src/assets/img/.png)
--User can to sign in in existant account
-![Screen](./src/assets/img/.png)
-- User can create new activity, then update or delete it
-![Screen](./src/assets/img/.png)
-- User can view a list of his activities
-![Screen](./src/assets/img/.png)
+- User can to create an account
+![Screen](./src/assets/img/1img.png)
+
+- User can to sign in existant account
+![Screen](./src/assets/img/2img.png)
+
+- User can create new tracking
+![Screen](./src/assets/img/3img.png)
+
+- User can view a diagram of each tracking
+![Screen](./src/assets/img/4img.png)
 
 ### [Live Demo](https://app-front.netlify.app)
 
