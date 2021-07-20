@@ -12,10 +12,12 @@ const SignUp = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password === confirmPassword) {
+      setIsError(false);
       axios({
         method: 'post',
         url: `${baseUrl}/sign_up`,
@@ -31,8 +33,8 @@ const SignUp = ({ history }) => {
         .then(() => {
           history.push('/signin');
         })
-        .catch(() => {
-          history.push('/not-found');
+        .catch((error) => {
+          setIsError(true);
         });
     }
   };
@@ -80,7 +82,7 @@ const SignUp = ({ history }) => {
             value={confirmPassword}
             placeholder="Confirm password"
           />
-
+         {isError && <div>Something went wrong ...</div>}
           <div>
             <SubmitButton> Sign up </SubmitButton>
           </div>
