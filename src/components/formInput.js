@@ -13,7 +13,7 @@ const FormInput = ({
       onChange={handleChange}
       placeholder={placeholder}
       id={id}
-      required
+      required={required}
     />
   </div>
 );
