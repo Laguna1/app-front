@@ -85,14 +85,14 @@ const SignUp = ({ history }) => {
           (
           {isError
           &&
-            <div className="errors">
+             <div className="errors">
           Something went wrong ...
-            <ul>
-               <li>Username can`t be blank</li>
-               <li>Password can`t be blank</li>
-               <li>ConfirmPassword can`t be blank</li>
+             <ul>
+              <li>Username can`t be blank</li>
+              <li>Password can`t be blank</li>
+              <li>ConfirmPassword can`t be blank</li>
              </ul>
-          </div>}
+            </div>}
           )
           <div>
             <SubmitButton> Sign up </SubmitButton>
