@@ -10,11 +10,11 @@ import './Login.css';
 const SignIn = ({ history, login }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     login(username, password, history);
-  };
+ };
 
   const handleUsernameChange = (event) => {
     const { value } = event.target;
@@ -38,14 +38,16 @@ const SignIn = ({ history, login }) => {
             handleChange={handleUsernameChange}
             value={username}
             placeholder="username"
-          />
+            required={true}
+         />
           <FormInput
             name="Password:"
             type="password"
             value={password}
             handleChange={handlePasswordChange}
             placeholder="password"
-          />
+            required={true}
+            />
           <div>
             <div className="">
               <SubmitButton> Log in </SubmitButton>

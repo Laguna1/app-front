@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormInput = ({
-  name, type, handleChange, value, placeholder, id,
+  name, type, handleChange, value, placeholder, id, required,
 }) => (
   <div>
     <label htmlFor={id}>{name}</label>
@@ -13,11 +13,12 @@ const FormInput = ({
       onChange={handleChange}
       placeholder={placeholder}
       id={id}
+      required={required}
     />
   </div>
 );
 
-const { string, func } = PropTypes;
+const { bool, string, func } = PropTypes;
 
 FormInput.propTypes = {
   name: string.isRequired,
@@ -26,6 +27,7 @@ FormInput.propTypes = {
   value: string.isRequired,
   placeholder: string.isRequired,
   id: string.isRequired,
+  required: bool.isRequired,
 };
 
 export default FormInput;

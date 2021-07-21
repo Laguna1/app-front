@@ -8,7 +8,7 @@ const NotFound = () => (
       404
     </div>
     <div className="nf-text">
-      Page is not found.
+      Page is not found
     </div>
     <Link className="nf-link" to="/">
       To Homepage

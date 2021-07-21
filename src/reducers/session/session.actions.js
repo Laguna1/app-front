@@ -27,7 +27,7 @@ export const login = (username, password, history) => () => axios({
       });
   })
   .catch(() => {
-    history.push('/not-found');
+    history.push('/signin');
   });
 
 export const logout = (history) => () => sessionService.loadSession()
@@ -51,7 +51,7 @@ export const logout = (history) => () => sessionService.loadSession()
       });
   })
   .catch(() => {
-    history.push('/not-found');
+    history.push('/signin');
   });
 
 export const openActivItem = (date, history) => () => sessionService.loadSession()
