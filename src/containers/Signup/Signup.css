@@ -65,3 +65,8 @@
   font-weight: 900;
   text-decoration: underline;
 }
+
+.errors {
+  margin-top: 25px;
+  color: red;
+}

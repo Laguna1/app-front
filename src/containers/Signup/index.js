@@ -33,7 +33,7 @@ const SignUp = ({ history }) => {
         .then(() => {
           history.push('/signin');
         })
-        .catch((error) => {
+        .catch(() => {
           setIsError(true);
         });
     }
@@ -82,7 +82,13 @@ const SignUp = ({ history }) => {
             value={confirmPassword}
             placeholder="Confirm password"
           />
-         {isError && <div>Something went wrong ...</div>}
+         {isError && <div className="errors">Something went wrong ...
+             <ul>
+               <li>Username can't be blank</li>
+               <li>Password can't be blank</li>
+               <li>ConfirmPassword can't be blank</li>
+             </ul>
+          </div>}
           <div>
             <SubmitButton> Sign up </SubmitButton>
           </div>
