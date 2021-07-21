@@ -91,8 +91,7 @@ const SignUp = ({ history }) => {
                 <li>ConfirmPassword can`t be blank</li>
               </ul>
             </div>
-          )
-          }
+          )}
           )
           <div>
             <SubmitButton> Sign up </SubmitButton>
