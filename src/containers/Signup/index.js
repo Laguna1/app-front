@@ -92,7 +92,6 @@ const SignUp = ({ history }) => {
               </ul>
             </div>
           )
-
           }
           )
           <div>
