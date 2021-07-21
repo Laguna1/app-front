@@ -39,7 +39,7 @@ const SignIn = ({ history, login }) => {
             value={username}
             placeholder="username"
             required
-        />
+         />
           <FormInput
             name="Password:"
             type="password"
@@ -47,7 +47,7 @@ const SignIn = ({ history, login }) => {
             handleChange={handlePasswordChange}
             placeholder="password"
             required
-        />
+          />
           <div>
             <div className="">
               <SubmitButton> Log in </SubmitButton>
