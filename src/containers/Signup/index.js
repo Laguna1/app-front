@@ -83,7 +83,8 @@ const SignUp = ({ history }) => {
             placeholder="Confirm password"
           />
           (
-            {isError && 
+          {isError
+          &&
           <div className="errors">
           Something went wrong ...
              <ul>

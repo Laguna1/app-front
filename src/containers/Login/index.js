@@ -39,7 +39,7 @@ const SignIn = ({ history, login }) => {
             value={username}
             placeholder="username"
             required
-         />
+          />
           <FormInput
             name="Password:"
             type="password"
