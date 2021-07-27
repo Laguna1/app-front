@@ -1,0 +1,10 @@
+.progress-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.progress-page-title {
+  padding: 20px;
+}

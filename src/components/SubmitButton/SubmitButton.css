@@ -1,0 +1,13 @@
+.btn-login {
+  border: none;
+  background-color: rgb(173, 220, 145);
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
